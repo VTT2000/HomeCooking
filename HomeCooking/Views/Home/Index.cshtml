@@ -1,0 +1,555 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.leanModal.min.js"></script>
+    <script src="~/lib/popper/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <div id="shopify-section-header" class="shopify-section shopify-section__header">
+        <section data-section-id="header" data-section-type="header">
+            <header class="header header--inline " role="banner">
+                <div class="container">
+                    <div class="header__inner">
+                        <h1 class="header__logo">
+                            <a href="#" class="header__logo-link">
+                                <img class="header__logo-image" style="max-width: 140px" width="941" height="295" src="~/img/logo.png" alt="VITAMIN HOUSE">
+                            </a>
+                        </h1><div class="header__search-bar-wrapper ">
+                            <form action="/search" method="get" role="search" class="search-bar">
+                                <div class="search-bar__top-wrapper">
+                                    <div class="search-bar__top">
+                                        <input type="hidden" name="type" value="product">
+                                        <input type="hidden" name="options[prefix]" value="last">
+
+                                        <div class="search-bar__input-wrapper">
+                                            <input class="search-bar__input" type="text" name="q" autocomplete="off" autocorrect="off" aria-label="Tìm nhanh sản phẩm..." placeholder="Tìm nhanh sản phẩm...">
+
+                                        </div><div class="search-bar__filter">
+                                            <label for="search-product-type" class="search-bar__filter-label">
+                                                <span class="search-bar__filter-active">Tất cả danh mục</span><svg focusable="false" class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+                                                    <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+                                                </svg>
+                                            </label>
+
+                                            <select id="search-product-type">
+                                                <option value="" selected="selected">Tất cả danh mục</option>
+                                                <option value="Thị bò">Thịt bò</option>
+                                            </select>
+                                        </div><button type="submit" class="search-bar__submit" aria-label="Tìm kiếm">
+                                            <svg focusable="false" class="icon icon--search" viewBox="0 0 21 21" role="presentation">
+                                                <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
+                                                    <path d="M19 19l-5-5" stroke-linecap="square"></path>
+                                                    <circle cx="8.5" cy="8.5" r="7.5"></circle>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="search-bar__inner">
+                                    <div class="search-bar__inner-animation">
+                                        <div class="search-bar__results" aria-hidden="true">
+                                            <div class="skeleton-container">
+                                                <div class="search-bar__result-item search-bar__result-item--skeleton">
+                                                    <div class="search-bar__image-container">
+                                                        <div class="aspect-ratio aspect-ratio--square">
+                                                            <div class="skeleton-image"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="search-bar__item-info">
+                                                        <div class="skeleton-paragraph">
+                                                            <div class="skeleton-text"></div>
+                                                            <div class="skeleton-text"></div>
+                                                        </div>
+                                                    </div>
+                                                </div><div class="search-bar__result-item search-bar__result-item--skeleton">
+                                                    <div class="search-bar__image-container">
+                                                        <div class="aspect-ratio aspect-ratio--square">
+                                                            <div class="skeleton-image"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="search-bar__item-info">
+                                                        <div class="skeleton-paragraph">
+                                                            <div class="skeleton-text"></div>
+                                                            <div class="skeleton-text"></div>
+                                                        </div>
+                                                    </div>
+                                                </div><div class="search-bar__result-item search-bar__result-item--skeleton">
+                                                    <div class="search-bar__image-container">
+                                                        <div class="aspect-ratio aspect-ratio--square">
+                                                            <div class="skeleton-image"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="search-bar__item-info">
+                                                        <div class="skeleton-paragraph">
+                                                            <div class="skeleton-text"></div>
+                                                            <div class="skeleton-text"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-bar__results-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><div class="header__action-list">
+                            <div class="header__action-item hidden-tablet-and-up">
+                                <a class="header__action-item-link" href="/search" data-action="toggle-search" aria-expanded="false" aria-label="Mở tìm kiếm">
+                                    <svg focusable="false" class="icon icon--search" viewBox="0 0 21 21" role="presentation">
+                                        <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
+                                            <path d="M19 19l-5-5" stroke-linecap="square"></path>
+                                            <circle cx="8.5" cy="8.5" r="7.5"></circle>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="header__action-item header__action-item--account">
+                                <span class="header__action-item-title hidden-pocket hidden-lap">Đăng nhập/ Đăng ký</span><div class="header__action-item-content">
+
+                                    <a class="header__action-item-link hidden-pocket hidden-lap" id="modal_trigger" href="#modal">
+                                        Tài khoản
+                                    </a>
+                                    <div id="modal" class="popupContainer" style="display:none;">
+                                        <header class="popupHeader">
+                                            <span class="header_title">Login</span>
+                                            <span class="modal_close"><i class="fa fa-times"></i></span>
+                                        </header>
+
+                                        <section class="popupBody">
+                                            <!-- Social Login -->
+                                            <div class="social_login">
+                                                <div class="">
+                                                    <a href="#" class="social_box fb">
+                                                        <span class="icon"><i class="fa fa-facebook"></i></span>
+                                                        <span class="icon_title">Connect with Facebook</span>
+
+                                                    </a>
+
+                                                    <a href="#" class="social_box google">
+                                                        <span class="icon"><i class="fa fa-google-plus"></i></span>
+                                                        <span class="icon_title">Connect with Google</span>
+                                                    </a>
+                                                </div>
+
+                                                <div class="centeredText">
+                                                    <span>Or use your Email address</span>
+                                                </div>
+
+                                                <div class="action_btns">
+                                                    <div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+                                                    <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Username & Password Login form -->
+                                            <div class="user_login">
+                                                <form>
+                                                    <label>Email / Username</label>
+                                                    <input type="text" />
+                                                    <br />
+
+                                                    <label>Password</label>
+                                                    <input type="password" />
+                                                    <br />
+
+                                                    <div class="checkbox">
+                                                        <input id="remember" type="checkbox" />
+                                                        <label for="remember">Remember me on this computer</label>
+                                                    </div>
+
+                                                    <div class="action_btns">
+                                                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                                                        <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+                                                    </div>
+                                                </form>
+
+                                                <a href="#" class="forgot_password">Forgot password?</a>
+                                            </div>
+
+                                            <!-- Register Form -->
+                                            <div class="user_register">
+                                                <form>
+                                                    <label>Full Name</label>
+                                                    <input type="text" />
+                                                    <br />
+
+                                                    <label>Email Address</label>
+                                                    <input type="email" />
+                                                    <br />
+
+                                                    <label>Password</label>
+                                                    <input type="password" />
+                                                    <br />
+
+                                                    <div class="checkbox">
+                                                        <input id="send_updates" type="checkbox" />
+                                                        <label for="send_updates">Send me occasional email updates</label>
+                                                    </div>
+
+                                                    <div class="action_btns">
+                                                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                                                        <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+
+                            </div><div class="header__action-item header__action-item--cart">
+                                <a class="header__action-item-link header__cart-toggle" href="/cart" aria-controls="mini-cart" aria-expanded="false" data-action="toggle-mini-cart" data-no-instant="">
+                                    <div class="header__action-item-content">
+                                        <div class="header__cart-icon icon-state" aria-expanded="false">
+                                            <span class="icon-state__primary">
+                                                <svg focusable="false" class="icon icon--cart" viewBox="0 0 27 24" role="presentation">
+                                                    <g transform="translate(0 1)" stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
+                                                        <circle stroke-linecap="square" cx="11" cy="20" r="2"></circle>
+                                                        <circle stroke-linecap="square" cx="22" cy="20" r="2"></circle>
+                                                        <path d="M7.31 5h18.27l-1.44 10H9.78L6.22 0H0"></path>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <span class="hidden-pocket hidden-lap">Giỏ hàng</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end  Header-->
+            <!-- nav bar-->
+            <nav class="nav-bar">
+                <div class="nav-bar__inner">
+                    <div class="container">
+                        <ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list">
+                            <li class="nav-bar__item"><a href="/pages/gioi-thieu" class="nav-bar__link link" data-type="menuitem">GIỚI THIỆU</a></li>
+                            <li class="nav-bar__item">
+                                <a href="#1" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-controls="desktop-menu-0-2" aria-haspopup="true">
+                                    DANH MỤC SẢN PHẨM<svg focusable="false" class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+                                        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+                                    </svg><svg focusable="false" class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+                                            <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link" data-type="menuitem">SẢN PHẨM MÙA DỊCH</a></li>
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link" data-type="menuitem">SALE</a></li>
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link" data-type="menuitem">BLOG NẤU ĂN</a></li>
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link" data-type="menuitem">TUYỂN DỤNG</a></li>
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link" data-type="menuitem">LIÊN HỆ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </div>
+    <!-- end nav bar-->
+    <!-- body-->
+    <main id="main" role="main">
+        <!-- slider-->
+
+        <div id="shopify-section-slideshow" class="shopify-section">
+            <section data-section-id="slideshow" data-section-type="slideshow">
+                <div id="carouselExampleIndicators slideshow slideshow--preserve-ratio slideshow--edge2edge flickity-enabled is-draggable" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner flickity-viewport ">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="~/img/thit.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/img/do an.jpg" alt="Second slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- end slider-->
+        <!-- list sản phẩm-->
+        <div id="shopify-section-item" class="shopify-section">
+            <section class="section" data-section-id="" data-section-type="featured-collection">
+                <div class="container">
+                    <header class="section__header">
+                        <div class="section__header-stack">
+                            <h2 class="section__title heading h3">TOP SẢN PHẨM TRONG MÙA DỊCH</h2>
+
+                        </div>
+                        <a href="#" class="section__action-link link">View all</a>
+                    </header>
+                </div>
+                <!-- sản phẩm-->
+                <div class="container ">
+                    <div class="scroller">
+                        <div class="scroller__inner">
+                            <div class="product-list product-list--vertical product-list--scrollable flickity-enabled" tabindex="0">
+                                <div>
+                                    <div>
+                                        <div class="product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected" style=" left: 0%;">
+                                            <a href="#" class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                                                <div class="aspect-ratio " style="padding-bottom: 100.0%">
+                                                    <img class="" sizes="216px" srcset="">
+                                                    <img src="~/img/thit-bo-my.jpg" />
+                                                </div>
+                                            </a><div class="product-item__info">
+                                                <div class="product-item__info-inner">
+                                                    <a class="product-item__vendor link" href="/collections/vendors?q=HARRYS">HARRYS</a>
+                                                    <a href="/products/banh-mi-hoa-cuc-harrys-brioche-500g" class="product-item__title text--strong link">Thịt bò mỹ 500G</a>
+                                                    <div class="product-item__price-list price-list">
+                                                        <span class="price price--highlight">
+                                                            <span class="visually-hidden">Giá sale</span>129.000₫
+                                                        </span>
+                                                        <span class="price price--compare">
+                                                            <span class="visually-hidden">Giá gốc</span>141.900₫
+                                                        </span>
+                                                    </div>
+                                                    <a class="product-item__reviews-badge link" href="#">
+                                                        <span class="spr-badge" id="spr_badge_6806124495026" data-rating="5.0">
+                                                            <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i></span><span class="spr-badge-caption">5 reviews</span>
+                                                        </span>
+
+                                                    </a><span class="product-item__inventory inventory inventory--high">Còn hàng</span>
+                                                </div>
+                                                <form method="post" action="#" id="product_form_id_6806124495026_1624509122e13fa354" accept-charset="UTF-8" class="product-item__action-list button-stack" enctype="multipart/form-data">
+                                                    <input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8" value="✓"><input type="hidden" name="quantity" value="1">
+                                                    <input type="hidden" name="id" value="40249814745266">
+                                                    <button type="submit" class="product-item__action-button button button--small button--primary" data-action="add-to-cart">Thêm vào giỏ</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end sản phẩm-->
+            </section>
+        </div>
+        <!-- end list sản phẩm-->
+    </main>
+    <div id="shopify-section-text-with-icons" class="shopify-section">
+        <section class="section section--tight" data-section-id="text-with-icons" data-section-type="text-with-icons">
+            <div class="container container--flush">
+                <div class="text-with-icons ">
+                    <div class="text-with-icons__item" data-block-index="0">
+                        <div class="text-with-icons__icon-wrapper">
+                            <svg focusable="false" viewBox="0 0 22 24" role="presentation">
+                                <g stroke-width="1.5" fill="none" fill-rule="evenodd">
+                                    <path stroke="#18543b" d="M9 17h4v6H9z"></path>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M3 12v11h16V12M21 9c0 2-1.1 3-2.5 3S16 10.9 16 9.5c0 1.4-1.1 2.5-2.5 2.5S11 10.9 11 9.5c0 1.4-1.1 2.5-2.5 2.5S6 10.9 6 9.5C6 10.9 4.9 12 3.5 12S1 11 1 9l4-8h12l4 8z"></path>
+                                </g>
+                            </svg>
+                        </div><div class="text-with-icons__content-wrapper">
+                            <p class="text-with-icons__title text--strong">Bán lẻ, sỉ và đa kênh bán</p><div class="text-with-icons__content rte">
+                                <p>Có bảng giá cho khách lẻ và khách sỉ riêng biệt, đảm bảo quyền lợi cao nhất của khách hàng</p>
+                            </div>
+                        </div>
+                    </div><div class="text-with-icons__item" data-block-index="1">
+                        <div class="text-with-icons__icon-wrapper">
+                            <svg focusable="false" viewBox="0 0 23 24" role="presentation">
+                                <g transform="translate(1 1)" stroke-width="1.5" fill="none" fill-rule="evenodd">
+                                    <path stroke="#18543b" d="M8 4h8v7"></path>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M11 7L8 4l3-3"></path>
+                                    <circle stroke="#18543b" stroke-linecap="square" cx="6" cy="20" r="2"></circle>
+                                    <circle stroke="#18543b" stroke-linecap="square" cx="18" cy="20" r="2"></circle>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M21 5l-2 10H5L3 0H0"></path>
+                                </g>
+                            </svg>
+                        </div><div class="text-with-icons__content-wrapper">
+                            <p class="text-with-icons__title text--strong">Thiết kế và gói quà tặng</p><div class="text-with-icons__content rte">
+                                <p>Gói quà và thiết kế giỏ quà theo ngân sách và nhu cầu tuỳ biến, xuất hoá đơn VAT</p>
+                            </div>
+                        </div>
+                    </div><div class="text-with-icons__item" data-block-index="2">
+                        <div class="text-with-icons__icon-wrapper">
+                            <svg focusable="false" viewBox="0 0 24 24" role="presentation">
+                                <g stroke-width="1.5" fill="none" fill-rule="evenodd">
+                                    <path d="M6.5 3.25l12 6" stroke="#18543b"></path>
+                                    <path stroke="#18543b" d="M23 7l-10 5L1 6M13 12v11"></path>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M23 7v10l-10 6-12-6V6l10-5z"></path>
+                                </g>
+                            </svg>
+                        </div><div class="text-with-icons__content-wrapper">
+                            <p class="text-with-icons__title text--strong">Freeship TP.HCM</p><div class="text-with-icons__content rte">
+                                <p>Miễn phí vận chuyển với đơn hàng từ 600K Nội thành TP.HCM và ship nhanh ngay trong ngày đến khách hàng</p>
+                            </div>
+                        </div>
+                    </div><div class="text-with-icons__item" data-block-index="3">
+                        <div class="text-with-icons__icon-wrapper">
+                            <svg focusable="false" viewBox="0 0 24 22" role="presentation">
+                                <g transform="translate(1 1)" stroke-width="1.5" fill="none" fill-rule="evenodd">
+                                    <path d="M5 10H2M5 15H4" stroke="#18543b" stroke-linecap="square"></path>
+                                    <path stroke="#18543b" d="M16.829 16H22v-6l-4-2-1-4H9v12h2.171"></path>
+                                    <path d="M0 5h5" stroke="#18543b" stroke-linecap="square"></path>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M0 0h9v4"></path>
+                                    <circle stroke="#18543b" stroke-linecap="square" cx="14" cy="17" r="3"></circle>
+                                    <path stroke="#18543b" stroke-linecap="square" d="M13 7v2h2"></path>
+                                </g>
+                            </svg>
+                        </div><div class="text-with-icons__content-wrapper">
+                            <p class="text-with-icons__title text--strong">Ship COD Toàn quốc</p><div class="text-with-icons__content rte">
+                                <p>Shop nhận gửi COD toàn quốc có kèm mã tracking đến khách hàng nhằm theo dõi đơn hàng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="shopify-section-footer" class="shopify-section">
+        <footer class="footer" data-section-id="footer" data-section-type="footer" role="contentinfo">
+            <div class="container">
+                <div class="footer__wrapper">
+                    <div class="footer__block-list">
+                        <div class="footer__block-item footer__block-item--links">
+                            <button class="footer__title heading h6" disabled="disabled" aria-expanded="false" aria-controls="block-footer-1" data-action="toggle-collapsible">
+                                <span>Thông Tin Chung</span>
+                                <span class="plus-button"></span>
+                            </button>
+
+                            <div id="block-footer-1" class="footer__collapsible">
+                                <div class="footer__collapsible-content">
+                                    <ul class="footer__linklist list--unstyled" role="list">
+                                        <li>
+                                            <a href="/pages/gioi-thieu-an" class="footer__link-item link">Giới thiệu</a>
+                                        </li>
+                                        <li>
+                                            <a href="/pages/lien-h%E1%BB%87" class="footer__link-item link">Liên hệ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#1" class="footer__link-item link">Thanh toán</a>
+                                        </li>
+                                        <li>
+                                            <a href="/pages/chinh-sach-thanh-toan" class="footer__link-item link">Chính sách thanh toán</a>
+                                        </li>
+                                        <li>
+                                            <a href="/pages/chinh-sach-van-chuyen" class="footer__link-item link">Chính sách giao nhận</a>
+                                        </li>
+                                        <li>
+                                            <a href="/pages/chinh-sach-doi-tra" class="footer__link-item link">Chính sách đổi trả</a>
+                                        </li>
+                                        <li>
+                                            <a href="/pages/chinh-sach-tich-diem" class="footer__link-item link">Chính sách tích điểm</a>
+                                        </li>
+                                        <li>
+                                            <a href="/policies/terms-of-service" class="footer__link-item link">Điều khoản dịch vụ</a>
+                                        </li>
+                                        <li>
+                                            <a href="/policies/refund-policy" class="footer__link-item link">Chính sách đổi trả hàng</a>
+                                        </li>
+                                        <li>
+                                            <a href="/policies/privacy-policy" class="footer__link-item link">Chính sách bảo mật</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><div class="footer__block-item footer__block-item--text">
+                            <button class="footer__title heading h6" disabled="disabled" aria-expanded="false" aria-controls="block-footer-0" data-action="toggle-collapsible">
+                                <span>VỀ CHÚNG TÔI</span>
+                                <span class="plus-button"></span>
+                            </button>
+
+                            <div id="block-footer-0" class="footer__collapsible">
+                                <div class="footer__collapsible-content">
+                                    <div class="rte">
+                                        <p>Website hoạt động dưới sự cho phép của:<br>Công ty TNHH HUTECH<br>Địa chỉ : 475A Điện Biên Phủ, P.25, Q.Bình Thạnh, TP.HCM</p><p>HOMECOOKING - HỖ TRỢ MÙA DỊCH<br>Hotline: 09xxxxxxxxx
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="footer__block-item footer__block-item--newsletter">
+                            <p class="footer__title heading h6">Bản tin</p>
+
+                            <div class="footer__newsletter-wrapper">
+                                <div class="footer__newsletter-text rte"><p>Đăng ký để không bỏ lỡ thông tin hoặc chương trình khuyến mãi hấp dẫn</p></div><form method="post" action="/contact#footer-newsletter" id="footer-newsletter" accept-charset="UTF-8" class="footer__newsletter-form">
+                                    <input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓"><input type="hidden" name="contact[tags]" value="newsletter">
+
+                                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                                        <input type="email" id="footer[contact][email]" name="contact[email]" class="form__field form__field--text" required="">
+                                        <label for="footer[contact][email]" class="form__floating-label">Nhập địa chỉ email</label>
+                                    </div>
+
+                                    <button type="submit" class="form__submit form__submit--tight button button--primary">Đăng ký</button><a class="logoSaleNoti" href="#" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.125120810274!2d106.71230301500829!3d10.80172789230435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a459cb43ab%3A0x6c3d29d370b52a7e!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBDw7RuZyBOZ2jhu4cgVFAuSENNIC0gSFVURUNI!5e0!3m2!1svi!2s!4v1634011683340!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div><aside class="footer__aside">
+                        <div class="footer__aside-item footer__aside-item--localization">
+                            <form method="post" action="/localization" id="localization_form_footer" accept-charset="UTF-8" class="footer__localization-form" enctype="multipart/form-data"><input type="hidden" name="form_type" value="localization"><input type="hidden" name="utf8" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="return_to" value="/"></form><p class="hidden-pocket">© 2021 HOMECOOKING</p>
+                        </div><div class="footer__aside-item footer__aside-item--copyright hidden-lap-and-up">
+                            <p>© 2021 HOMECOOKING</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </footer>
+
+
+
+    </div>
+    <script>
+        // Plugin options and our code
+        $("#modal_trigger").leanModal({
+            top: 100,
+            overlay: 0.6,
+            closeButton: ".modal_close"
+        });
+
+        $(function () {
+            // Calling Login Form
+            $("#login_form").click(function () {
+                $(".social_login").hide();
+                $(".user_login").show();
+                return false;
+            });
+
+            // Calling Register Form
+            $("#register_form").click(function () {
+                $(".social_login").hide();
+                $(".user_register").show();
+                $(".header_title").text('Register');
+                return false;
+            });
+
+            // Going back to Social Forms
+            $(".back_btn").click(function () {
+                $(".user_login").hide();
+                $(".user_register").hide();
+                $(".social_login").show();
+                $(".header_title").text('Login');
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
+
+  
