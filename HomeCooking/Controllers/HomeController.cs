@@ -20,6 +20,10 @@ namespace HomeCooking.Controllers
 
         public IActionResult Index()
         {
+            HomeCooking0Context context = new HomeCooking0Context();
+
+            ViewBag.a = context.ThucPhams.FirstOrDefault(p => p.IdFood == "TP000001").NameFood;
+
             return View();
         }
 
