@@ -13,14 +13,14 @@ namespace HomeCooking.Controllers
     [ApiController]
     public class apiThucPhamController : ControllerBase
     {
-        IEnumerable<string> _presidents = new List<string> {
-            "Biden", "Trump", "Bush", "Clinton"
-        };
-        [HttpGet]
-        public IEnumerable<string> Index()
-        {
-            return _presidents;
-        }
+        //IEnumerable<string> _presidents = new List<string> {
+        //    "Biden", "Trump", "Bush", "Clinton"
+        //};
+        //[HttpGet]
+        //public IEnumerable<string> Index()
+        //{
+        //    return _presidents;
+        //}
 
 
         [HttpGet]
