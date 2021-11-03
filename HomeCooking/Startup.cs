@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using HomeCooking.Models;
 
 namespace HomeCooking
 {
@@ -24,6 +26,10 @@ namespace HomeCooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc();
+            services.AddDbContext<HomeCooking0Context>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("HomeCooking0Database")));
         }
 
         //public void ConfigureServices(IServiceCollection services)
@@ -52,7 +58,6 @@ namespace HomeCooking
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthorization();
@@ -65,8 +70,10 @@ namespace HomeCooking
 
             });
 
-            
-            
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+
             //app.UseSession();
         }
 
