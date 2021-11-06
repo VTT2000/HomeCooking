@@ -12,7 +12,7 @@ namespace HomeCooking.apiController
     [Route("api/[controller]")]
     [ApiController]
     public class ThucPhamsController : ControllerBase
-    {
+    {        
         private readonly HomeCooking0Context _context;
 
         public ThucPhamsController(HomeCooking0Context context)

@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\PartialView\**" />
+    <Content Remove="Views\PartialView\**" />
+    <EmbeddedResource Remove="Views\PartialView\**" />
+    <None Remove="Views\PartialView\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.20">
