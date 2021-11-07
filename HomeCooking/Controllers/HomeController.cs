@@ -23,7 +23,7 @@ namespace HomeCooking.Controllers
             HomeCooking0Context context = new HomeCooking0Context();
 
             ViewBag.LoHangs = context.LoHangs.ToList();
-
+            ViewBag.KhuyenMais = context.KhuyenMais.ToList();
             var list = context.ThucPhams.ToList();
             return View(list);
         }

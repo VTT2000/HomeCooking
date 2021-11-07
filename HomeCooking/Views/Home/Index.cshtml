@@ -4,6 +4,7 @@
     ViewBag.Title = "Trang chủ";
     Layout = "_Layout";
     List<LoHang> list0 = ViewBag.LoHangs as List<LoHang>;
+    List<KhuyenMai> list1 = ViewBag.KhuyenMais as List<KhuyenMai>;
 }
 
 <!DOCTYPE html>
@@ -80,12 +81,23 @@
                                                         <a class="product-item__vendor link" href="/collections/vendors?q=HARRYS">HARRYS</a>
                                                         <a href="/products/banh-mi-hoa-cuc-harrys-brioche-500g" class="product-item__title text--strong link">@item.NameFood</a>
                                                         <div class="product-item__price-list price-list">
-                                                            <span class="price price--highlight">
-                                                                <span class="visually-hidden">Giá sale</span>@item.Price₫
-                                                            </span>
-                                                            <span class="price price--compare">
-                                                                <span class="visually-hidden">Giá gốc</span>@item.Price₫
-                                                            </span>
+                                                            @if (list1.FirstOrDefault(p => p.IdKhuyenMai == item.IdKhuyenMai) != null)
+                                                            {
+                                                                var sale = item.Price * (100 - list1.FirstOrDefault(p => p.IdKhuyenMai == item.IdKhuyenMai).PhanTramKhuyenMai) / 100;
+                                                                <span class="price price--highlight">
+                                                                    <span class="visually-hidden">Giá sale</span>@sale₫
+                                                                </span>
+                                                                <span class="price price--compare">
+                                                                    <span class="visually-hidden">Giá gốc</span>@item.Price₫
+                                                                </span>
+                                                            }
+                else
+                {
+                                                        <span class="price price--highlight">
+                                                            <span class="visually-hidden">Giá gốc</span>@item.Price₫
+                                                        </span>
+                }
+
                                                         </div>
                                                         <a class="product-item__reviews-badge link" href="#">
                                                             <span class="spr-badge" id="spr_badge_6806124495026" data-rating="5.0">
