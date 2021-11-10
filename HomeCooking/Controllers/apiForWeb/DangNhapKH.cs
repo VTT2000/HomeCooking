@@ -38,6 +38,8 @@ namespace HomeCooking.Controllers.apiForWeb
                     }
                     else
                     {
+                        HttpContext.Session.SetString("KhachHangName", kh.Name);
+                        HttpContext.Session.SetString("KhachHangIdKH", kh.IdKh);
                         // Cookies
                         CookieOptions option = new CookieOptions
                         {

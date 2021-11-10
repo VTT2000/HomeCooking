@@ -24,89 +24,138 @@
                             <a href="#" class="header__logo-link">
                                 <img class="header__logo-image" style="max-width: 140px" width="941" height="295" src="~/img/logo.png" alt="VITAMIN HOUSE">
                             </a>
-                        </h1><div class="header__search-bar-wrapper ">
-                            <form action="/search" method="get" role="search" class="search-bar">
-                                <div class="search-bar__top-wrapper">
-                                    <div class="search-bar__top">
-                                        <input type="hidden" name="type" value="product">
-                                        <input type="hidden" name="options[prefix]" value="last">
+                        </h1>
+                        <div class="header__search-bar-wrapper " id="outBoxSearch">
+                                 <form action="setyhhj" method="get" role="search" class="search-bar">
+                                     <div class="search-bar__top-wrapper">
+                                         <div class="search-bar__top">
+                                             <input type="hidden" name="type" value="product">
+                                             <input type="hidden" name="options[prefix]" value="last">
 
-                                        <div class="search-bar__input-wrapper">
-                                            <input class="search-bar__input" type="text" name="q" autocomplete="off" autocorrect="off" aria-label="Tìm nhanh sản phẩm..." placeholder="Tìm nhanh sản phẩm...">
+                                             <div class="search-bar__input-wrapper">
+                                                 <input id="inputSearchForIdLoaiSP" class="search-bar__input" type="text" name="q" autocomplete="off" autocorrect="off" aria-label="Tìm nhanh sản phẩm..." placeholder="Tìm nhanh sản phẩm...">
 
-                                        </div><div class="search-bar__filter">
-                                            <label for="search-product-type" class="search-bar__filter-label">
-                                                <span class="search-bar__filter-active">Tất cả danh mục</span><svg focusable="false" class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
-                                                    <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
-                                                </svg>
-                                            </label>
+                                             </div><div class="search-bar__filter">
+                                                 <label for="search-product-type" class="search-bar__filter-label">
+                                                     <span class="search-bar__filter-active" id="spanSelectedLTP">Tất cả loại thực phẩm</span><svg focusable="false" class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+                                                         <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+                                                     </svg>
+                                                 </label>
+                                                 <select id="search-product-type">
+                                                     @*<option value="all" selected="selected">Tất cả loại thục phẩm</option>
+                        <option value="Thị bò">Thịt bò</option>*@
+                                                 </select>
 
-                                            <select id="search-product-type">
-                                                <option value="" selected="selected">Tất cả danh mục</option>
-                                                <option value="Thị bò">Thịt bò</option>
-                                            </select>
-                                        </div><button type="submit" class="search-bar__submit" aria-label="Tìm kiếm">
-                                            <svg focusable="false" class="icon icon--search" viewBox="0 0 21 21" role="presentation">
-                                                <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
-                                                    <path d="M19 19l-5-5" stroke-linecap="square"></path>
-                                                    <circle cx="8.5" cy="8.5" r="7.5"></circle>
-                                                </g>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="search-bar__inner">
-                                    <div class="search-bar__inner-animation">
-                                        <div class="search-bar__results" aria-hidden="true">
-                                            <div class="skeleton-container">
-                                                <div class="search-bar__result-item search-bar__result-item--skeleton">
-                                                    <div class="search-bar__image-container">
-                                                        <div class="aspect-ratio aspect-ratio--square">
-                                                            <div class="skeleton-image"></div>
-                                                        </div>
-                                                    </div>
+                                             </div><button type="submit" class="search-bar__submit" aria-label="Tìm kiếm">
+                                                 <svg focusable="false" class="icon icon--search" viewBox="0 0 21 21" role="presentation">
+                                                     <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
+                                                         <path d="M19 19l-5-5" stroke-linecap="square"></path>
+                                                         <circle cx="8.5" cy="8.5" r="7.5"></circle>
+                                                     </g>
+                                                 </svg>
+                                             </button>
+                                         </div>
+                                     </div>
+                                     
+                                     @*<div class="search-bar__inner" style="visibility:visible" >
+                                         <div class="search-bar__inner-animation">
+                                             <div class="search-bar__results" aria-hidden="false">
+                                                 <div class="skeleton-container">
+                                                     <div class="search-bar__result-item search-bar__result-item--skeleton">
+                                                         <div class="search-bar__image-container">
+                                                             <div class="aspect-ratio aspect-ratio--square">
+                                                                 <div class="skeleton-image"></div>
+                                                             </div>
+                                                         </div>
 
-                                                    <div class="search-bar__item-info">
-                                                        <div class="skeleton-paragraph">
-                                                            <div class="skeleton-text"></div>
-                                                            <div class="skeleton-text"></div>
-                                                        </div>
-                                                    </div>
-                                                </div><div class="search-bar__result-item search-bar__result-item--skeleton">
-                                                    <div class="search-bar__image-container">
-                                                        <div class="aspect-ratio aspect-ratio--square">
-                                                            <div class="skeleton-image"></div>
-                                                        </div>
-                                                    </div>
+                                                         <div class="search-bar__item-info">
+                                                             <div class="skeleton-paragraph">
+                                                                 <div class="skeleton-text"></div>
+                                                                 <div class="skeleton-text"></div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
 
-                                                    <div class="search-bar__item-info">
-                                                        <div class="skeleton-paragraph">
-                                                            <div class="skeleton-text"></div>
-                                                            <div class="skeleton-text"></div>
-                                                        </div>
-                                                    </div>
-                                                </div><div class="search-bar__result-item search-bar__result-item--skeleton">
-                                                    <div class="search-bar__image-container">
-                                                        <div class="aspect-ratio aspect-ratio--square">
-                                                            <div class="skeleton-image"></div>
-                                                        </div>
-                                                    </div>
+                                                 <div class="search-bar__results-inner">
+                                                     <p class="search-bar__result-category">Sản phẩm</p>
+                                                     <div class="search-bar__result-products">
 
-                                                    <div class="search-bar__item-info">
-                                                        <div class="skeleton-paragraph">
-                                                            <div class="skeleton-text"></div>
-                                                            <div class="skeleton-text"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                         <a href="/products/pate-phap-cao-cap-avon-ragobert-180g?_pos=1&amp;_sid=4b6ae2d3c&amp;_ss=r&amp;variant=40653464764594" class="search-bar__result-item">
+                                                             <div class="search-bar__image-container">
+                                                                 <div class="aspect-ratio aspect-ratio--square">
+                                                                     <img src="//cdn.shopify.com/s/files/1/0563/5745/4002/products/pateAvonRagonbertvitaminhouse_120x120.png?v=1627917519" alt="Pate Pháp Cao Cấp Avon &amp; Ragobert 180g">
+                                                                 </div>
+                                                             </div>
 
-                                            <div class="search-bar__results-inner"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div><div class="header__action-list">
+                                                             <div class="search-bar__item-info">
+                                                                 <p class="search-bar__item-title"><strong class="highlight">P</strong>ate <strong class="highlight">P</strong>há<strong class="highlight">p</strong> Cao Cấ<strong class="highlight">p</strong> Avon &amp; Ragobert 180g</p>
+                                                                 <span class="search-bar__item-price">110.000₫</span>
+                                                             </div>
+                                                         </a>
+
+                                                     </div>
+                                                     
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>*@
+
+                                 <div id="resultBoxSearch">
+                                 </div>
+                                     
+                                     <script>
+                                         var selectedLTP = document.getElementById("search-product-type");
+                                         var urlSearchLTP = "https://" + location.host + "/api/LoaiThucPhams";
+                                         // url dung nap loai thuc pham
+                                         fetch(urlSearchLTP)
+                                             .then(response => response.json())
+                                             .then(response => {
+                                                 // Do something with response.
+                                                 var htmlStringSS = "<option value='all' selected='selected'>Tất cả loại thục phẩm</option>";
+                                                 for (i = 0; i < response.length; i++) {
+                                                     htmlStringSS = htmlStringSS + "<option value='" + response[i].idLoai + "' >" + response[i].tenLoai + "</option>"
+                                                 }
+                                                 selectedLTP.innerHTML = htmlStringSS;
+                                             })
+                                             .catch(error => alert(error));
+                                         selectedLTP.onchange = function () {
+                                             var spanSelected = document.getElementById("spanSelectedLTP");
+                                             spanSelected.innerHTML = selectedLTP.options[selectedLTP.selectedIndex].text;
+                                         };
+
+                                         var inputSearchTP = document.getElementById("inputSearchForIdLoaiSP");
+                                         var outBoxSearch = document.getElementById("outBoxSearch");
+                                         var result = document.getElementById("resultBoxSearch");
+                                         // url dung tim kiem
+                                         inputSearchTP.onkeyup = function timkiemSP() {
+                                             var htmlStringS = "";
+                                             if (inputSearchTP.value.toString().length > 0) {
+                                                 var urlSearch = "https://" + location.host + "/api/Search/" + selectedLTP.value + "/" + inputSearchTP.value;
+
+                                                 fetch(urlSearch)
+                                                     .then(response => response.json())
+                                                     .then(response => {
+                                                         // Do something with response.
+                                                         
+                                                         for (i = 0; i < response.length; i++) {
+                                                             htmlStringS = htmlStringS + "<p><a href='../SanPham/" + response[i].idFood + "' >" + response[i].nameFood + "</a></p>"
+                                                         }
+                                                         result.innerHTML = htmlStringS;
+
+                                                     })
+                                                     .catch(error => alert(error));
+                                             }
+                                             else {
+                                                 result.innerHTML = htmlStringS;
+                                             }
+                                             
+                                         }
+
+                                     </script>
+                                 </form>
+</div>
+                        <div class="header__action-list">
     <div class="header__action-item hidden-tablet-and-up">
         <a class="header__action-item-link" href="/search" data-action="toggle-search" aria-expanded="false" aria-label="Mở tìm kiếm">
             <svg focusable="false" class="icon icon--search" viewBox="0 0 21 21" role="presentation">
@@ -121,12 +170,7 @@
         @using Microsoft.AspNetCore.Http
         @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
-        @if (HttpContextAccessor.HttpContext.Request.Cookies["KhachHangIdKH"] != null)
-        {
-            <a class="header__action-item-title hidden-pocket hidden-lap" id="#" href="#">Chào, @HttpContextAccessor.HttpContext.Request.Cookies["KhachHangName"].ToString() </a>
-        }
-        else
-        {
+        
             @if (HttpContextAccessor.HttpContext.Session.GetString("KhachHangIdKH") != null)
             {
                 <a class="header__action-item-title hidden-pocket hidden-lap" id="#" href="#">Chào, @HttpContextAccessor.HttpContext.Session.GetString("KhachHangName").ToString() </a>
@@ -330,8 +374,8 @@
                     </div>
 
                 </div>
+            
             }
-        }
 
 
 
@@ -553,7 +597,10 @@
 
     </div>
     <script>
+        /*$(".search-bar__inner").show();*/
+        
         // Plugin options and our code
+        
         $("#modal_trigger").leanModal({
             top: 100,
             overlay: 0.6,

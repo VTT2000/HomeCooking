@@ -781,3 +781,11 @@ C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\bin\Debug\netcoreapp
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Food\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\ConsignmentManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\FoodManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\RecipesManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Shared\admin\_AdminLayout.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\SupplierManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\TypeManage\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\UserManage\Index.cshtml.g.cs

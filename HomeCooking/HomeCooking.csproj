@@ -13,6 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\ConsignmentManage\Index.cshtml" />
+    <None Include="Views\EmployeeManage\Index.cshtml" />
+    <None Include="Views\FoodManage\Index.cshtml" />
+    <None Include="Views\RecipesManage\Index.cshtml" />
+    <None Include="Views\SupplierManage\Index.cshtml" />
+    <None Include="Views\TypeManage\Index.cshtml" />
+    <None Include="Views\UserManage\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.20">
