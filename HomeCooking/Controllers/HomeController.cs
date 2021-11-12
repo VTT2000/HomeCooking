@@ -25,6 +25,7 @@ namespace HomeCooking.Controllers
             {
                 HttpContext.Session.SetString("KhachHangName", HttpContext.Request.Cookies["KhachHangIdKH"].ToString());
                 HttpContext.Session.SetString("KhachHangIdKH", HttpContext.Request.Cookies["KhachHangName"].ToString());
+                
             }
             
             HomeCooking0Context context = new HomeCooking0Context();

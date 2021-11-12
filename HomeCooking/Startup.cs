@@ -78,8 +78,48 @@ namespace HomeCooking
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý chi tiết kho bếp",
+                    pattern: "Admin/CTKhoBepManage",
+                    defaults: new { controller = "CTKhoBepManage", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý kho bếp",
+                    pattern: "Admin/KhoBepManage",
+                    defaults: new { controller = "KhoBepManage", action = "Index" });
+                
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý quyền",
+                    pattern: "Admin/PermissionManage",
+                    defaults: new { controller = "PermissionManage", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý chi tiết hóa đơn khách hàng",
+                    pattern: "Admin/CTInvoiceManage",
+                    defaults: new { controller = "CTInvoiceManage", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý theo dõi thực phẩm",
+                    pattern: "Admin/FoodFollowedManage",
+                    defaults: new { controller = "FoodFollowedManage", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý chọn thực phẩm cho công thức nấu ăn",
+                    pattern: "Admin/CTRecipes",
+                    defaults: new { controller = "CTRecipes", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý chọn chủ đề cho công thức nấu ăn",
+                    pattern: "Admin/CTTittleRecipes",
+                    defaults: new { controller = "CTTittleRecipes", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Trang quản trị quản lý chủ đề cho công thức nấu ăn",
+                    pattern: "Admin/TittleRecipesManage",
+                    defaults: new { controller = "TittleRecipesManage", action = "Index" });
+
+                endpoints.MapControllerRoute(
                     name: "Trang quản trị quản lý hóa đơn khách hàng",
-                    pattern: "Admin/SaleManage",
+                    pattern: "Admin/InvoiceManage",
                     defaults: new { controller = "InvoiceManage", action = "Index" });
 
                 endpoints.MapControllerRoute(

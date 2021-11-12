@@ -70,6 +70,19 @@ namespace HomeCooking.Controllers
         public IActionResult Xoa(string id)
         {
             HomeCooking0Context context = new HomeCooking0Context();
+            var listRemove = context.ChiTietChuDeCongThucs.Where(p => p.IdCongThuc == id);
+            if(listRemove.Count() != 0)
+            {
+                context.ChiTietChuDeCongThucs.RemoveRange(listRemove);
+                context.SaveChanges();
+            }
+            var listRemove2 = context.ChiTietCongThucNauAns.Where(p => p.IdCongThuc == id);
+            if (listRemove2.Count() != 0)
+            {
+                context.ChiTietCongThucNauAns.RemoveRange(listRemove2);
+                context.SaveChanges();
+            }
+
             CongThucNauAn a = context.CongThucNauAns.ToList().FirstOrDefault(p => p.IdCongThuc == id);
             context.CongThucNauAns.Remove(a);
             context.SaveChanges();

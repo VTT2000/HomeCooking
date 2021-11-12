@@ -113,6 +113,7 @@ namespace HomeCooking.Controllers
         public IActionResult Xoa(string id)
         {
             HomeCooking0Context context = new HomeCooking0Context();
+            
             ThucPham x = context.ThucPhams.ToList().FirstOrDefault(p => p.IdFood == id);
             context.ThucPhams.Remove(x);
             context.SaveChanges();

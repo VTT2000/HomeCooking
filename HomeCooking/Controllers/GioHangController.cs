@@ -52,6 +52,14 @@ namespace HomeCooking.Controllers
             return View(listGH);
         }
 
+        [HttpPost,ActionName("Index")]
+        public IActionResult ThanhToan()
+        {
+            
+
+            return View();
+        }
+
 
         private int? TongSoLuong()
         {

@@ -10,6 +10,7 @@ namespace HomeCooking.Controllers
 {
     public class ConsignmentManageController : Controller
     {
+        
         public IActionResult Index()
         {
             HomeCooking0Context context = new HomeCooking0Context();
