@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HomeCooking.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace HomeCooking.Controllers
 {
@@ -13,10 +14,16 @@ namespace HomeCooking.Controllers
     {
         private readonly HomeCooking0Context _context;
 
-        public FoodFollowedManageController(HomeCooking0Context context)
+        public FoodFollowedManageController(HomeCooking0Context context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            // bo dau cham thang de tra ve dang nhap
+            if (String.IsNullOrEmpty(httpContextAccessor.HttpContext.Session.GetString("IdQuanLy")))
+            {
+                httpContextAccessor.HttpContext.Response.Redirect("../Admin/Login");
+            }
         }
+        
 
         // GET: FoodFollowedManage
         public async Task<IActionResult> Index()

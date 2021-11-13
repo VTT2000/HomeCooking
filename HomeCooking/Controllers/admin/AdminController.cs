@@ -9,22 +9,24 @@ namespace HomeCooking.Controllers
 {
     public class AdminController : Controller
     {
-        public AdminController()
-        {
-            
-            //if (true)
-            //{
-            //    Response.Redirect("/Home/Index");
-            //}
-        }
-
+        
         public IActionResult admin()
         {
-            
+            HttpContext.Session.SetString("IdQuanLy","");// cai dat vao dang nhap Khi dang nhap = quyen admin
+
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("IdQuanLy")))
+            {
+                HttpContext.Response.Redirect("../Admin/Login");
+            }
+
             return View();
         }
+        public IActionResult Login()
+        {
+            
+            return NotFound("ok");
+        }
 
-        
 
     }
 }

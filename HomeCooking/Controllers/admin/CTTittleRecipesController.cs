@@ -13,6 +13,14 @@ namespace HomeCooking.Controllers
     public class CTTittleRecipesController : Controller
     {
         HomeCooking0Context context = new HomeCooking0Context();
+        public CTTittleRecipesController(IHttpContextAccessor httpContextAccessor)
+        {
+            // bo dau cham thang de tra ve dang nhap
+            if (String.IsNullOrEmpty(httpContextAccessor.HttpContext.Session.GetString("IdQuanLy")))
+            {
+                httpContextAccessor.HttpContext.Response.Redirect("../Admin/Login");
+            }
+        }
         public IActionResult Index()
         {
             var list = context.ChiTietChuDeCongThucs.Include(c => c.IdChuDeNavigation);

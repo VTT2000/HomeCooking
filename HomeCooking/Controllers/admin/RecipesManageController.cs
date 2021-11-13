@@ -10,6 +10,14 @@ namespace HomeCooking.Controllers
 {
     public class RecipesManageController : Controller
     {
+        public RecipesManageController(IHttpContextAccessor httpContextAccessor)
+        {
+            // bo dau cham thang de tra ve dang nhap
+            if (String.IsNullOrEmpty(httpContextAccessor.HttpContext.Session.GetString("IdQuanLy")))
+            {
+                httpContextAccessor.HttpContext.Response.Redirect("../Admin/Login");
+            }
+        }
         public IActionResult Index()
         {
             HomeCooking0Context context = new HomeCooking0Context();

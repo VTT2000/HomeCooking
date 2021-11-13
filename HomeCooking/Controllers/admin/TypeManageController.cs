@@ -1,4 +1,5 @@
 using HomeCooking.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,14 @@ namespace HomeCooking.Controllers
 {
     public class TypeManageController : Controller
     {
+        public TypeManageController(IHttpContextAccessor httpContextAccessor)
+        {
+            // bo dau cham thang de tra ve dang nhap
+            if (String.IsNullOrEmpty(httpContextAccessor.HttpContext.Session.GetString("IdQuanLy")))
+            {
+                httpContextAccessor.HttpContext.Response.Redirect("../Admin/Login");
+            }
+        }
         public IActionResult Index()
         {
             HomeCooking0Context context = new HomeCooking0Context();

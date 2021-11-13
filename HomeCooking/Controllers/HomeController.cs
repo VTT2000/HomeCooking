@@ -21,11 +21,10 @@ namespace HomeCooking.Controllers
 
         public IActionResult Index()
         {
-            if(HttpContext.Request.Cookies["KhachHangIdKH"] != null && HttpContext.Request.Cookies["KhachHangName"] != null)
+            if(!String.IsNullOrEmpty(HttpContext.Request.Cookies["KhachHangIdKH"]) && !String.IsNullOrEmpty(HttpContext.Request.Cookies["KhachHangName"]))
             {
-                HttpContext.Session.SetString("KhachHangName", HttpContext.Request.Cookies["KhachHangIdKH"].ToString());
-                HttpContext.Session.SetString("KhachHangIdKH", HttpContext.Request.Cookies["KhachHangName"].ToString());
-                
+                HttpContext.Session.SetString("KhachHangName", HttpContext.Request.Cookies["KhachHangName"].ToString());
+                HttpContext.Session.SetString("KhachHangIdKH", HttpContext.Request.Cookies["KhachHangIdKH"].ToString());                
             }
             
             HomeCooking0Context context = new HomeCooking0Context();
@@ -49,5 +48,17 @@ namespace HomeCooking.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        public IActionResult LogOut()
+        {
+            if (!String.IsNullOrEmpty(HttpContext.Request.Cookies["KhachHangIdKH"]) && !String.IsNullOrEmpty(HttpContext.Request.Cookies["KhachHangName"]))
+            {
+                HttpContext.Response.Cookies.Delete("KhachHangIdKH");
+                HttpContext.Response.Cookies.Delete("KhachHangName");
+            }
+            HttpContext.Session.SetString("KhachHangName", "");
+            HttpContext.Session.SetString("KhachHangIdKH", "");
+            
+            return RedirectToAction("Index","Home");
+        }
     }
 }
