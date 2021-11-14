@@ -60,5 +60,45 @@ namespace HomeCooking.Controllers
             
             return RedirectToAction("Index","Home");
         }
+        public IActionResult DangNhapFB(string fname, string lname, string email)
+        {
+            string fullname = fname + " " + lname; 
+            HomeCooking0Context context = new HomeCooking0Context();
+            KhachHang kh = context.KhachHangs.FirstOrDefault(p => p.Email == email && p.Name == fullname);
+            if(kh == null)
+            {
+                kh = new KhachHang();
+                kh.Name = fullname;
+                kh.Email = email;
+                kh.DateCreated = DateTime.Now;
+                context.KhachHangs.Add(kh);
+                context.SaveChanges();
+            }
+
+            HttpContext.Session.SetString("KhachHangName", kh.Name);
+            HttpContext.Session.SetString("KhachHangIdKH", kh.IdKh);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult DangNhapGG(string name, string email)
+        {
+            HomeCooking0Context context = new HomeCooking0Context();
+            KhachHang kh = context.KhachHangs.FirstOrDefault(p => p.Email == email && p.Name == name);
+            if (kh == null)
+            {
+                kh = new KhachHang();
+                kh.Name = name;
+                kh.Email = email;
+                kh.DateCreated = DateTime.Now;
+                context.KhachHangs.Add(kh);
+                context.SaveChanges();
+            }
+
+            HttpContext.Session.SetString("KhachHangName", kh.Name);
+            HttpContext.Session.SetString("KhachHangIdKH", kh.IdKh);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
