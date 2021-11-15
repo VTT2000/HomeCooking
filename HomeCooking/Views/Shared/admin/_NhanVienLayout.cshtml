@@ -59,7 +59,7 @@
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
                 <img src="~/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin page</span>
+                <span class="brand-text font-weight-light">Nhân viên page</span>
             </a>
 
             <!-- Sidebar -->
@@ -72,7 +72,7 @@
                     @using Microsoft.AspNetCore.Http
                     @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
                 <div class="info">
-                    <a href="#" class="d-block">Chào @HttpContextAccessor.HttpContext.Session.GetString("NameQuanLy")</a>
+                    <a href="#" class="d-block">Chào @HttpContextAccessor.HttpContext.Session.GetString("NameNhanVien")</a>
                     
                     <a href="@Url.Action("LogOut","Admin")" class="d-block">LogOut</a>
                 </div>
@@ -100,102 +100,7 @@
                                 <p> Thực phẩm</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "TypeManage")">
-                                <i class="fas fa-hamburger"></i>
-                                <p> Loại Thực phẩm</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "ConsignmentManage")">
-                                <i class="fas fa-boxes"></i>
-                                <p> Lô Hàng</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "EmployeeManage")">
-                                <i class="fas fa-user-tie"></i>
-                                <p> Nhân viên</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "RecipesManage")">
-                                <i class="fas fa-utensils"></i>
-                                <p> Công Thức</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "UserManage")">
-                                <i class="fas fa-users"></i>
-                                <p> Người dùng</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "SupplierManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Nhà Sản Xuất</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "SaleManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Khuyến mãi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "InvoiceManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Hóa đơn </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "TittleRecipesManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Chủ đề </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "CTTittleRecipes")">
-                                <i class="fas fa-industry"></i>
-                                <p> Chọn chủ đề cho công thức</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "CTRecipes")">
-                                <i class="fas fa-industry"></i>
-                                <p> Chọn thực phẩm cho công thức</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "FoodFollowedManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Theo dõi thực phẩm</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "CTInvoiceManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Chi tiết hóa đơn </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "PermissionManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Quyền </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "KhoBepManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Kho bếp online </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "CTKhoBepManage")">
-                                <i class="fas fa-industry"></i>
-                                <p> Chi tiết kho bếp </p>
-                            </a>
-                        </li>
+                        
 
                     </ul>
                 </nav>

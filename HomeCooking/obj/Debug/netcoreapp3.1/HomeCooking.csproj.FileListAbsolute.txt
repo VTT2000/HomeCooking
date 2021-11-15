@@ -862,3 +862,6 @@ C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\CTKhoBepManage\Edit.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\CTKhoBepManage\Index.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Login.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\nhanvien.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Shared\admin\_NhanVienLayout.cshtml.g.cs

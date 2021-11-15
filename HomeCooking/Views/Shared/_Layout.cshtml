@@ -255,9 +255,9 @@
         {
             <input id="IsCheckedFB" value="0" type="hidden" />
             <div hidden class="g-signin2" data-onsuccess="onSignIn"></div>
-                <a class="header__action-item-title hidden-pocket hidden-lap" href="#">Chào, @HttpContextAccessor.HttpContext.Session.GetString("KhachHangName").ToString() </a>
-                <br />
-                <a class="header__action-item-title hidden-pocket hidden-lap" onclick="logOutTK()"> LogOut </a>
+                <a class="header__action-item-title hidden-pocket hidden-lap" href="@Url.Action("Index","Account")">Chào, @HttpContextAccessor.HttpContext.Session.GetString("KhachHangName").ToString() </a>
+                @*<br />
+                <a class="header__action-item-title hidden-pocket hidden-lap" onclick="logOutTK()"> LogOut </a>*@
 
 
             }

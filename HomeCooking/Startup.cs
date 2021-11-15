@@ -78,6 +78,11 @@ namespace HomeCooking
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Trang nhân viên",
+                    pattern: "NhanVien",
+                    defaults: new { controller = "Admin", action = "nhanvien" });
+
+                endpoints.MapControllerRoute(
                     name: "Trang quản trị quản lý chi tiết kho bếp",
                     pattern: "Admin/CTKhoBepManage",
                     defaults: new { controller = "CTKhoBepManage", action = "Index" });
