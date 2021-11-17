@@ -1,4 +1,4 @@
-
+@model HomeCooking.Models.KhachHang;
 @{
     ViewData["Title"] = "Account";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,8 +13,8 @@
             <div class="card__section card__section--tight">
 
               <div class="card__linklist">
-                <a href="#" class="card__linklist-item link text--strong">Thông tin cá nhân</a>
-                <a href="#" class="card__linklist-item link">Đơn hàng của tôi </a>
+                <a href="@Url.Action("Index","Account")" class="card__linklist-item link text--strong">Thông tin cá nhân</a>
+                <a href="@Url.Action("Invoice","Account")" class="card__linklist-item link">Đơn hàng của tôi </a>
                 <a href="#" class="card__linklist-item link">Thực phẩm đã lưu</a>
                 <a href="#" class="card__linklist-item link">Kho bếp của tôi</a>
                 <a href="#" class="card__linklist-item link" data-no-instant="" onclick="logOutTK()" >Đăng xuất</a>
@@ -29,33 +29,43 @@
               <h1 class="heading h1">Thông tin cá nhân </h1>
             </div>
             <div class="card__section">
-              <form method="post" action="/account/addresses" id="address_form_new" accept-charset="UTF-8" class="form">
-                <input type="hidden" name="form_type" value="customer_address"><input type="hidden" name="utf8" value="✓">
-                <div class="form__input-wrapper form__input-wrapper--labelled">
-                  <label for="address-newname]" class="form__floating-label">Họ và tên</label>
-                  <input id="address-new[name]" type="text" class="form__field form__field--text " name="address[first_name]" value="" autofocus="">
+                <form method="post" action="~/Account/Index" id="address_form_new" accept-charset="UTF-8" class="form">
+                    <input type="hidden" name="form_type" value="customer_address"><input type="hidden" name="utf8" value="✓">
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-newname]" class="form__floating-label">Họ và tên</label>
+                        <input id="address-new[name]" type="text" class="form__field form__field--text " name="nameKH" value="@Model.Name" autofocus="">
 
-                </div>
+                    </div>
 
-                <div class="form__input-wrapper form__input-wrapper--labelled">
-                  <label for="address-new[company]" class="form__floating-label">Công ty</label>
-                  <input id="address-new[company]" type="text" class="form__field form__field--text " name="address[company]" value="">
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-new[phone]" class="form__floating-label">Điện thoại</label>
+                        <input id="address-new[phone]" type="text" class="form__field form__field--text " name="sdtKH" value="@Model.Sdt">
 
-                </div>
+                    </div>
 
-                <div class="form__input-wrapper form__input-wrapper--labelled">
-                  <label for="address-new[phone]" class="form__floating-label">Điện thoại</label>
-                  <input id="address-new[phone]" type="text" class="form__field form__field--text " name="address[phone]" value="">
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-new[address1]" class="form__floating-label">Địa chỉ</label>
+                        <input id="address-new[address1]" type="text" class="form__field form__field--text " name="diachiKH" value="@Model.DiaChi">
 
-                </div>
+                    </div>
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-new[company]" class="form__floating-label">Email</label>
+                        <input id="address-new[company]" type="email" class="form__field form__field--text " name="emailKH" value="@Model.Email">
 
-                <div class="form__input-wrapper form__input-wrapper--labelled">
-                  <label for="address-new[address1]" class="form__floating-label">Địa chỉ</label>
-                  <input id="address-new[address1]" type="text" class="form__field form__field--text " name="address[address1]" value="">
+                    </div>
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-new[address1]" class="form__floating-label">Password</label>
+                        <input id="address-new[address1]" type="password" class="form__field form__field--text " name="pwKH" value="@Model.Password">
 
-                </div>
-                <button class="form__submit button button--primary button--full">Sửa thông tin</button>
-              </form>
+                    </div>
+                    <div class="form__input-wrapper form__input-wrapper--labelled">
+                        <label for="address-new[address1]" class="form__floating-label">Xác nhận lại Password</label>
+                        <input id="address-new[address1]" type="password" class="form__field form__field--text " name="repwKH" value="@Model.Password">
+
+                    </div>
+                    <p class="text-danger">@ViewBag.Error</p>
+                    <button class="form__submit button button--primary button--full" type="submit">Cập nhật thông tin</button>
+                </form>
             </div>
           </div>
         </div>

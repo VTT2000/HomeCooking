@@ -15,30 +15,67 @@ namespace HomeCooking.Controllers
 
         public List<GioHang> LayGioHang()
         {
-            List<GioHang> listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
-            if (listGioHang == null)
+            List<GioHang> listGioHang = new List<GioHang>();
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("GioHang")))
             {
-                listGioHang = new List<GioHang>();
                 HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGioHang));
+            }
+            else
+            {
+                listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
             }
             return listGioHang;
         }
 
-
-        public IActionResult ThemGioHang(string IdFood, string strURL)
+        
+        public IActionResult ThemGioHang([FromQuery]string IdFood, [FromQuery]string strURL, [FromQuery]int? soLuong)
         {
             List<GioHang> listGH = LayGioHang();
-
             GioHang sanPham = listGH.ToList().FirstOrDefault(p => p.zIdFood == IdFood);
             if(sanPham == null)
             {
-                sanPham = new GioHang(IdFood);
+                ThucPham a = context.ThucPhams.FirstOrDefault(p => p.IdFood == IdFood);
+                sanPham = new GioHang();
+                
+                sanPham.zIdFood = a.IdFood;
+                if (String.IsNullOrEmpty(a.IdKhuyenMai))
+                {
+                    sanPham.zDonGia = double.Parse(a.Price.ToString());
+                }
+                else
+                {
+                    KhuyenMai b = context.KhuyenMais.FirstOrDefault(p => p.IdKhuyenMai == a.IdKhuyenMai);
+                    sanPham.zDonGia = double.Parse(a.Price.ToString()) * (100 - b.PhanTramKhuyenMai) / 100;
+                }
+                sanPham.zNameFood = a.NameFood;
+                sanPham.zLinkHinhAnh = a.LinkHinhAnh;
+                sanPham.zSoLuong = 1;
+
+                if (soLuong.HasValue)
+                {
+                    sanPham.zSoLuong = soLuong;
+                }
                 listGH.Add(sanPham);
+                HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGH));
                 return Redirect(strURL);
             }
             else
             {
-                sanPham.zSoLuong++;
+                for(int i = 0; i < listGH.Count; i++)
+                {
+                    if(listGH[i].zIdFood == IdFood)
+                    {
+                        if (soLuong.HasValue)
+                        {
+                            listGH[i].zSoLuong += soLuong;
+                        }
+                        else
+                        {
+                            listGH[i].zSoLuong += 1;
+                        }
+                    }
+                }
+                HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGH));
                 return Redirect(strURL);
             }
         }

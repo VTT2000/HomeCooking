@@ -71,15 +71,15 @@
 
 
                                         <div class="product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected" style=" left: 0%;">
-                                            <a href="#" class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                                            <a href="@Url.Action("Index","Food",new { id = item.IdFood })" class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                                                 <div class="aspect-ratio " style="padding-bottom: 100.0%">
                                                     <img class="" sizes="216px" srcset="">
                                                     <img src="@item.LinkHinhAnh" />
                                                 </div>
                                             </a><div class="product-item__info">
                                                     <div class="product-item__info-inner">
-                                                        <a class="product-item__vendor link" href="/collections/vendors?q=HARRYS">HARRYS</a>
-                                                        <a href="/products/banh-mi-hoa-cuc-harrys-brioche-500g" class="product-item__title text--strong link">@item.NameFood</a>
+                                                        @*<a class="product-item__vendor link" href="/collections/vendors?q=HARRYS">HARRYS</a>*@
+                                                        <a href="@Url.Action("Index","Food",new { id = item.IdFood })" class="product-item__title text--strong link">@item.NameFood</a>
                                                         <div class="product-item__price-list price-list">
                                                             @if (list1.FirstOrDefault(p => p.IdKhuyenMai == item.IdKhuyenMai) != null)
                                                             {
@@ -99,17 +99,12 @@
                                                             }
 
                                                         </div>
-                                                        <a class="product-item__reviews-badge link" href="#">
-                                                            <span class="spr-badge" id="spr_badge_6806124495026" data-rating="5.0">
-                                                                <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i></span><span class="spr-badge-caption">5 reviews</span>
-                                                            </span>
-
-                                                        </a>
+                                                        
                                                         @if (list0.FindAll(p => p.IdFood == item.IdFood).FirstOrDefault(p => p.SoLuong > 0) != null)
                                                         {
                                                             @using Microsoft.AspNetCore.Http.Extensions;
                                                             <span class="product-item__inventory inventory inventory--high">Còn hàng</span>
-                                                            <form method="get" action="../GioHang1/ThemGioHang" id="product_form_id_6806124495026_1624509122e13fa354" accept-charset="UTF-8" class="product-item__action-list button-stack" enctype="multipart/form-data">
+                                                            <form method="get" action="../GioHang/ThemGioHang" id="product_form_id_6806124495026_1624509122e13fa354" accept-charset="UTF-8" class="product-item__action-list button-stack" enctype="multipart/form-data">
                                                                 <input type="hidden" name="IdFood" value="@item.IdFood">
                                                                 <input type="hidden" name="strURL" value="@Context.Request.GetDisplayUrl()">
                                                                 <button type="submit" class="product-item__action-button button button--small button--primary" data-action="add-to-cart">Thêm vào giỏ</button>

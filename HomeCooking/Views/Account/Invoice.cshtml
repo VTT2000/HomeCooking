@@ -1,0 +1,89 @@
+﻿@model IEnumerable<HomeCooking.Models.HoaDonKhachHang>
+@{
+    ViewData["Title"] = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main id="main" role="main">
+    <section data-section-id="account" data-section-type="account">
+        <div class="container container--flush">
+            <div class="layout">
+                <!--list tác vụ-->
+                <div class="layout__section layout__section--secondary">
+                    <div class="card card--sticky hidden-pocket">
+                        <div class="card__section card__section--tight">
+
+                            <div class="card__linklist">
+                                <a href="@Url.Action("Index","Account")" class="card__linklist-item link ">Thông tin cá nhân</a>
+                                <a href="@Url.Action("Invoice","Account")" class="card__linklist-item link text--strong">Đơn hàng của tôi </a>
+                                <a href="#" class="card__linklist-item link">Thực phẩm đã lưu</a>
+                                <a href="#" class="card__linklist-item link">Kho bếp của tôi</a>
+                                <a href="#" class="card__linklist-item link" data-no-instant="" onclick="logOutTK()">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--layout tác vụ -->
+                <div class="layout__section">
+                    <div class="card">
+                        <div class="card__section card__section--tight">
+                            <h1 class="heading h1"> Các đơn hàng  </h1>
+                        </div>
+                        <div class="card__section">
+                            <table class="table" border="1">
+                                <tr style="background-color:gray">
+                                    <th>
+                                        Id hóa đơn
+                                    </th>
+                                    <th>
+                                        Ngày đặt
+                                    </th>
+                                    <th>
+                                        Ngày nhận
+                                    </th>
+                                    <th>
+                                        Tổng giá trị
+                                    </th>
+                                    <th>
+                                        Phương thức thanh toán
+                                    </th>
+                                    <th>
+                                        Tình trạng
+                                    </th>
+                                    <th>
+                                        Thao tác
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdInvoice)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DeliveryDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TongTien)đ
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PhuongThucThanhToan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            <a asp-action="DetailInvoice" asp-route-id="@item.IdInvoice">Xem chi tiết</a> 
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

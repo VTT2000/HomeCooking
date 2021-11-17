@@ -31,7 +31,7 @@ namespace HomeCooking.Controllers
 
             ViewBag.LoHangs = context.LoHangs.ToList();
             ViewBag.KhuyenMais = context.KhuyenMais.ToList();
-            var list = context.ThucPhams.ToList().Take(6);
+            var list = context.ThucPhams.ToList().Take(8);
             
             return View(list);
         }

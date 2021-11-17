@@ -811,6 +811,191 @@ a.btn_red {
         clear: both;
         overflow: hidden;
     }
+/*mini cart*/
+.mini-cart .icon--nav-triangle-borderless {
+    position: absolute;
+    width: 18px;
+    height: 8px;
+    right: 6px;
+    bottom: 100%;
+    z-index: 2;
+    filter: drop-shadow(0 -2 px 2 px rgba(0, 0, 0, .12));
+}
+
+.dropdown-menu {
+    background: none;
+    transform: translate(0px, 17px ) !important;
+}
+
+.mini-cart__line-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.mini-cart {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 100%;
+    max-height: 0;
+    background: var(--secondary-background);
+    color: var(--text-color);
+    z-index: 1;
+    transform: scale(.9);
+    transition: opacity .25s ease-in-out,transform .25s ease-in-out,visibility .25s ease-in-out,max-height 0s linear .25s;
+    will-change: transform;
+}
+
+@media screen and (min-width: 641px) {
+
+    .mini-cart {
+        left: auto;
+        right: 0;
+        max-height: none;
+        width: 470px;
+        height: auto;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px 2px rgb(0 0 0 / 10%);
+    }
+}
+
+
+
+@media screen and (min-width: 641px) {
+    .mini-cart__content > * {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+.mini-cart__line-item-list {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-scroll-chaining: none;
+    overscroll-behavior: none;
+}
+
+@media screen and (min-height: 700px) and (min-width: 641px) {
+    .mini-cart__line-item-list {
+        max-height: 330px;
+    }
+}
+
+.mini-cart__content > * {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media screen and (min-width: 641px) {
+    .mini-cart__item-wrapper {
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
+
+.mini-cart__image-wrapper {
+    min-width: 80px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.mini-cart__product-info {
+    margin-bottom: 12px;
+}
+
+@media screen and (min-width: 641px) {
+    .mini-cart__product-info {
+        margin: 0 20px 0 0;
+    }
+}
+
+.mini-cart__product-vendor {
+    display: block;
+    margin-bottom: 7px;
+    line-height: 1.55;
+    font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 12px));
+    text-transform: uppercase;
+}
+
+.mini-cart__product-title {
+    display: block;
+    margin-bottom: 4px;
+    font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px));
+    line-height: 1.5;
+}
+
+.mini-cart__price-list > .price {
+    font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+    font-weight: var(--text-font-bolder-weight);
+}
+
+.mini-cart__quantity-remove {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+    line-height: 1;
+}
+
+.mini-cart__quantity-remove {
+    display: block;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 10px auto 0 auto;
+}
+
+.mini-cart__recap {
+    padding: 15px 20px 20px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+@media screen and (min-width: 641px) {
+    .mini-cart__recap {
+        padding: 15px 25px 25px 25px;
+    }
+}
+
+.mini-cart__recap-price-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--heading-color);
+    font-weight: var(--text-font-bolder-weight);
+}
+
+.mini-cart__button-container {
+    margin-top: 16px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: -5px;
+}
+
+.button-group--fit > * {
+    flex: 1 0 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.button-group--loose {
+    margin: -10px;
+}
+
+    .button-group--loose > * {
+        margin: 10px;
+    }
+
+.button--secondary {
+    background: var(--secondary-button-background);
+    color: var(--secondary-button-text-color);
+}
 /*navbar*/
 @media screen and (min-width: 1000px) {
     .nav-bar {
