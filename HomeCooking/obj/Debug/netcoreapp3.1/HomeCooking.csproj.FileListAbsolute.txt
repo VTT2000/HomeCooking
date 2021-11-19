@@ -867,3 +867,5 @@ C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Shared\admin\_NhanVienLayout.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Account\Invoice.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Account\DetailInvoice.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\GioHang\Index.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\Account\FollowedFood.cshtml.g.cs

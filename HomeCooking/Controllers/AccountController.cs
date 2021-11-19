@@ -89,7 +89,39 @@ namespace HomeCooking.Controllers
 
             return View(list);
         }
-        
+
+        // to following
+
+        public IActionResult FollowedFood()
+        {
+            // id là id hóa đơn
+            string idKH = HttpContext.Session.GetString("KhachHangIdKH");
+            string namKH = HttpContext.Session.GetString("KhachHangName");
+            HomeCooking0Context context = new HomeCooking0Context();
+
+            List<TheoDoiThucPham> list = context.TheoDoiThucPhams.Where(p => p.IdKh == idKH).ToList();
+            ViewBag.ThucPhams = context.ThucPhams.ToList();
+
+            return View(list);
+        } 
+        public IActionResult DeleteFollowedFood(string id)
+        {
+            // id là id hóa đơn
+            string idKH = HttpContext.Session.GetString("KhachHangIdKH");
+            string namKH = HttpContext.Session.GetString("KhachHangName");
+            HomeCooking0Context context = new HomeCooking0Context();
+
+            TheoDoiThucPham delete = context.TheoDoiThucPhams.FirstOrDefault(p=>p.IdTheoDoi == id);
+            if(delete != null)
+            {
+                context.Remove(delete);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("FollowedFood","Account");
+        }
+
+
 
     }
 }

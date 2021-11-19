@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HomeCooking.Models.ChiTietHoaDonKhachHang>
+﻿@model IEnumerable<HomeCooking.Models.TheoDoiThucPham>
 @{
     ViewData["Title"] = "Account";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,8 +14,8 @@
 
                             <div class="card__linklist">
                                 <a href="@Url.Action("Index","Account")" class="card__linklist-item link ">Thông tin cá nhân</a>
-                                <a href="@Url.Action("Invoice","Account")" class="card__linklist-item link text--strong">Đơn hàng của tôi </a>
-                                <a href="@Url.Action("FollowedFood","Account")" class="card__linklist-item link">Thực phẩm đã theo dõi</a>
+                                <a href="@Url.Action("Invoice","Account")" class="card__linklist-item link ">Đơn hàng của tôi </a>
+                                <a href="@Url.Action("FollowedFood","Account")" class="card__linklist-item link text--strong">Thực phẩm đã theo dõi</a>
                                 <a href="#" class="card__linklist-item link">Kho bếp của tôi</a>
                                 <a href="#" class="card__linklist-item link" data-no-instant="" onclick="logOutTK()">Đăng xuất</a>
                             </div>
@@ -26,50 +26,56 @@
                 <div class="layout__section">
                     <div class="card">
                         <div class="card__section card__section--tight">
-                            <h1 class="heading h1"> Các đơn hàng  </h1>
+                            <h1 class="heading h1"> Các thực phẩm đã theo dõi </h1>
                         </div>
                         <div class="card__section">
                             <table class="table" border="1">
                                 <tr style="background-color:gray">
-                                    
+                                    <th>
+                                        Id theo dõi
+                                    </th>
                                     <th>
                                         Tên thực phẩm
                                     </th>
                                     <th>
-                                        Thuộc lô hàng
+                                        Số lượng trên một sản phẩm
                                     </th>
                                     <th>
-                                        Số lượng
+                                        Đơn vị tính
                                     </th>
                                     <th>
-                                        Giá trị
+                                        Tình trạng
+                                    </th>
+                                    <th>
+                                        Thao tác
                                     </th>
                                 </tr>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        
                                         <td>
-                                            <a href="@Url.Action("Index","Food", new { id=item.IdLoHangNavigation.IdFood })">
-                                                @Html.DisplayFor(modelItem => item.IdLoHangNavigation.IdFoodNavigation.NameFood)
-
+                                            @Html.DisplayFor(modelItem => item.IdTheoDoi)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Index","Food", new { id = item.IdFood })">
+                                                @Html.DisplayFor(modelItem => item.IdFoodNavigation.NameFood)
                                             </a>
-                                            
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.IdLoHangNavigation.IdLoHang)
+                                            @Html.DisplayFor(modelItem => item.IdFoodNavigation.SoLuong)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.SoLuong)
+                                            @Html.DisplayFor(modelItem => item.IdFoodNavigation.DonViTinh)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.GiaTien)đ
+                                            @Html.DisplayFor(modelItem => item.IdFoodNavigation.Status)
                                         </td>
-                                        
+                                        <td>
+                                            <a asp-action="DeleteFollowedFood" asp-route-id="@item.IdTheoDoi">Bỏ theo dõi</a>
+                                        </td>
                                     </tr>
                                 }
                             </table>
-                            <a class="btn-success" href="@Url.Action("Invoice","Account")">Trở về</a>
                         </div>
                     </div>
                 </div>
@@ -77,4 +83,3 @@
         </div>
     </section>
 </main>
-

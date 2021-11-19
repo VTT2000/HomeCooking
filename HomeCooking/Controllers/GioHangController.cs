@@ -28,6 +28,7 @@ namespace HomeCooking.Controllers
         }
 
         
+
         public IActionResult ThemGioHang([FromQuery]string IdFood, [FromQuery]string strURL, [FromQuery]int? soLuong)
         {
             List<GioHang> listGH = LayGioHang();
@@ -95,6 +96,78 @@ namespace HomeCooking.Controllers
             
 
             return View();
+        }
+        [HttpGet]
+        public IActionResult ThemMot([FromQuery] string IdFood)
+        {
+            List<GioHang> listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
+            for (int i = 0; i < listGioHang.Count; i++)
+            {
+                if (listGioHang[i].zIdFood == IdFood)
+                {
+                    if(listGioHang[i].zSoLuong + 1 > 10)
+                    {
+                        listGioHang[i].zSoLuong = 10;
+                    }
+                    else
+                    {
+                        listGioHang[i].zSoLuong = listGioHang[i].zSoLuong + 1;
+                    }
+                }
+            }
+            HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGioHang));
+            return RedirectToAction("Index", "GioHang");
+        }
+
+        [HttpGet]
+        public IActionResult GiamMot([FromQuery] string IdFood)
+        {
+            List<GioHang> listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
+            for (int i = 0; i < listGioHang.Count; i++)
+            {
+                if (listGioHang[i].zIdFood == IdFood)
+                {
+                    if (listGioHang[i].zSoLuong - 1 < 1)
+                    {
+                        listGioHang[i].zSoLuong = 1;
+                    }
+                    else
+                    {
+                        listGioHang[i].zSoLuong = listGioHang[i].zSoLuong - 1;
+                    }
+                }
+            }
+            HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGioHang));
+            return RedirectToAction("Index", "GioHang");
+        }
+
+
+        [HttpGet]
+        public IActionResult CapNhatGioHang([FromQuery]string IdFood, [FromQuery]int soLuong)
+        {
+            List<GioHang> listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
+            for (int i = 0; i < listGioHang.Count; i++)
+            {
+                if (listGioHang[i].zIdFood == IdFood)
+                {
+                    listGioHang[i].zSoLuong = soLuong;
+                }
+            }
+            HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGioHang));
+            return RedirectToAction("Index", "GioHang");
+        }
+
+        public IActionResult DeleteGH(string id)
+        {
+            List<GioHang> listGH = LayGioHang();
+
+            GioHang delete = listGH.FirstOrDefault(p => p.zIdFood == id);
+            if(delete != null)
+            {
+                listGH.Remove(delete);
+            }
+            HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGH));
+            return RedirectToAction("Index","GioHang");
         }
 
 
