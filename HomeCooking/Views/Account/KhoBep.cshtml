@@ -1,0 +1,134 @@
+﻿@model IEnumerable<HomeCooking.Models.ChiTietKhoBep>;
+@{
+    ViewData["Title"] = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main id="main" role="main">
+    <section data-section-id="account" data-section-type="account">
+        <div class="container container--flush">
+            <div class="layout">
+                <!--list tác vụ-->
+                <div class="layout__section layout__section--secondary">
+                    <div class="card card--sticky hidden-pocket">
+                        <div class="card__section card__section--tight">
+
+                            <div class="card__linklist">
+                                <a href="@Url.Action("Index","Account")" class="card__linklist-item link">Thông tin cá nhân</a>
+                                <a href="@Url.Action("Invoice","Account")" class="card__linklist-item link">Đơn hàng của tôi </a>
+                                <a href="@Url.Action("FollowedFood","Account")" class="card__linklist-item link">Thực phẩm đã theo dõi</a>
+                                <a href="@Url.Action("KhoBep","Account")" class="card__linklist-item link text--strong">Kho bếp của tôi</a>
+                                <a href="#" class="card__linklist-item link" data-no-instant="" onclick="logOutTK()">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--layout tác vụ -->
+                <div class="layout__section">
+                    <div class="card">
+                        <div class="card__section card__section--tight">
+                            <h1 class="heading h1">Kho bếp online </h1>
+                        </div>
+                        <div class="card__section">
+                            <table class="table" border="1">
+                                <tr style="background-color:gray">
+                                    <th>
+                                        Tên thực phẩm
+                                    </th>
+
+                                    <th>
+                                        Ngày sản xuất
+                                    </th>
+                                    <th>
+                                        Ngày hết hạn
+                                    </th>
+                                    <th>
+                                        Số lượng hiện tại
+                                    </th>
+                                    <th>
+                                        Đơn vị tính
+                                    </th>
+
+                                    <th>
+                                        Trạng thái
+                                    </th>
+                                    <th>
+                                        Thao tác
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href="@Url.Action("Index","Food", new { id = item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.IdFoodNavigation.IdFood })">
+                                                @Html.DisplayFor(modelItem => item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.IdFoodNavigation.NameFood)
+
+                                           </a>
+                                            </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.NgaySanXuat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.NgayHetHan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuongTrongChiTietHoDonKhachHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.IdFoodNavigation.DonViTinh)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+
+                                        <td>
+                                            <a href="@Url.Action("DeleteKhoBep","Account", new { IdKhoBep = item.IdKhoBep, IdInvoice = item.IdInvoice, IdLoHang = item.IdLoHang })">Xóa thực phẩm</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                        <div class="card__section card__section--tight">
+                            <h1 class="heading h1">Các món ăn gợi ý phù hợp với các nguyên liệu hiện tại </h1>
+                        </div>
+                        <div class="card__section">
+                            <table class="table" border="1">
+                                <tr style="background-color:gray">
+                                    <th>
+                                        Hình ảnh
+                                    </th>
+
+                                    <th>
+                                        Tên công thức
+                                    </th>
+                                    <th>
+                                        Mô tả món ăn
+                                    </th>
+                                    <th>
+                                        Thao tác
+                                    </th>
+                                </tr>
+                                @foreach (CongThucNauAn item in ViewBag.ListAvailable)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.LinkHinhAnh" />
+                                        </td>
+                                        <td>
+                                            @item.TenCongThuc
+                                        </td>
+                                        <td >
+                                            @item.MoTaMonAn
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Index","CongThuc", new { id = item.IdCongThuc })">Xem chi tiết</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

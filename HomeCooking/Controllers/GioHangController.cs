@@ -82,8 +82,10 @@ namespace HomeCooking.Controllers
         }
         public IActionResult Index()
         {
+            string idkh = HttpContext.Session.GetString("KhachHangIdKH");
             List<GioHang> listGH = LayGioHang();
 
+            ViewBag.KhachHang = context.KhachHangs.FirstOrDefault(p => p.IdKh == idkh);
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
 

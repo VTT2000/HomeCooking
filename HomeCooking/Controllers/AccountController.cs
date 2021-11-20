@@ -121,7 +121,58 @@ namespace HomeCooking.Controllers
             return RedirectToAction("FollowedFood","Account");
         }
 
+        public IActionResult KhoBep()
+        {
+            string idKH = HttpContext.Session.GetString("KhachHangIdKH");
+            string namKH = HttpContext.Session.GetString("KhachHangName");
+            HomeCooking0Context context = new HomeCooking0Context();
+            // kho bep
+            List<ChiTietKhoBep> list = context.ChiTietKhoBeps.Where(p => p.IdKhoBepNavigation.IdKh == idKH).ToList();
+            ViewBag.HoaDonKhachHangs = context.HoaDonKhachHangs.ToList();
+            ViewBag.ChiTietHoaDonKhachHangs = context.ChiTietHoaDonKhachHangs.ToList();
+            ViewBag.LoHangs = context.LoHangs.ToList();
+            ViewBag.ThucPhams = context.ThucPhams.ToList();
+            // cac cong thuc phu hop
+            List<CongThucNauAn> list2 = new List<CongThucNauAn>();
+            foreach(CongThucNauAn item in context.CongThucNauAns.ToList())
+            {
+                if (XetCongThucNauAn(item.IdCongThuc, list))
+                {
+                    list2.Add(item);
+                }
+            }
+            ViewBag.ListAvailable = list2;
 
+            return View(list);
+        }
+        public bool XetCongThucNauAn(string IdCongThuc, List<ChiTietKhoBep> list)//id cong thuc va list thuc pham trong kho bep 
+        {
+            string idKH = HttpContext.Session.GetString("KhachHangIdKH");
+            string namKH = HttpContext.Session.GetString("KhachHangName");
+            HomeCooking0Context context = new HomeCooking0Context();
 
+            //danh sach idfood and so luong can cho cong thuc
+            List<ChiTietCongThucNauAn> listTest = context.ChiTietCongThucNauAns.Where(p => p.IdCongThuc == IdCongThuc).ToList();
+            
+            int demTrue = 0;
+            for(int i = 0; i < list.Count; i++)
+            {
+                // chuyen id lo hang thanh id food trong list trong kho bep
+                string xIdFoodht = context.LoHangs.FirstOrDefault(p => p.IdLoHang == list[i].IdLoHang).IdFood;
+                int xSoLuonght = list[i].SoLuongTrongChiTietHoDonKhachHang.Value;
+                if (listTest.FirstOrDefault(p=>p.IdFood == xIdFoodht && p.SoLuong < xSoLuonght) != null)
+                {
+                    demTrue += 1;
+                }
+            }
+            if(demTrue == listTest.Count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    KhachHang a = ViewBag.KhachHang as KhachHang;
 }
 <main id="main" role="main">
     <div id="shopify-section-cart-template" class="shopify-section">
@@ -27,8 +29,8 @@
                                         </thead>
                                         <!-- đồ trong giỏ hàng-->
                                         <tbody>
-                                            @foreach(var item in Model)
-            {
+                                            @foreach (var item in Model)
+                                            {
                                             <tr class="line-item line-item--stack">
                                                 <td class="line-item__product-info">
                                                     <div class="line-item__product-info-wrapper">
@@ -100,7 +102,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <form class="cart-recap" method="post" action="/cart" novalidate="novalidate" data-item-count="1">
+                            <form class="cart-recap" novalidate="novalidate" data-item-count="1">
                                 <div class="cart-recap__scroller">
                                     <div class="card">
                                         <div class="card__section">
@@ -113,8 +115,37 @@
                                                     Phí vận chuyển tính tại bước thanh toán
                                                 </p>
                                             </div>
+                                            @using Microsoft.AspNetCore.Http
+                                            @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+                                            <input type="hidden" value="@HttpContextAccessor.HttpContext.Session.GetString("KhachHangIdKH")" id="IDKHDN" />
+                                            <input type="hidden" value="@Model.ToList().Count" id="SLGH" />
+                                            <input type="hidden" value="@a.DiaChi" id="DiaChiKH" />
 
-                                            <button type="submit" name="checkout" class="cart-recap__checkout button button--primary button--full button--large">Thanh toán</button>
+                                            <button onclick="thanhToan();" class="cart-recap__checkout button button--primary button--full button--large">Thanh toán</button>
+                                            <script>
+                                                function thanhToan() {
+                                                    var z = document.getElementById("IDKHDN");
+                                                    if (z.value == null || z.value.length == 0) {
+                                                        alert("Bạn hãy đăng nhập để thanh toán");
+                                                    }
+                                                    else {
+                                                        var c = document.getElementById("SLGH");
+                                                        if (parseInt(c.value, 0) == 0) {
+                                                            alert("Giỏ hàng bạn đang trống");
+                                                        }
+                                                        else {
+                                                            var n = document.getElementById("DiaChiKH");
+                                                            if (n.value.length == 0) {
+                                                                alert("Bạn hãy điền địa chỉ trong thông tin cá nhân để thanh toán");
+                                                            }
+                                                            else {
+                                                                location.href = "https://" + location.host + "/GioHang/ThanhToan";
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="cart-recap__secure-payment">

@@ -95,12 +95,18 @@
     with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "Index", "FoodManage")">
+                            <a class="nav-link" href="@Url.Action("ConfirmInvoice", "NhanVien")">
                                 <i class="fas fa-concierge-bell"></i>
-                                <p> Thực phẩm</p>
+                                <p> Xác nhận hóa đơn </p>
                             </a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ListConfirmedInvoice", "NhanVien")">
+                                <i class="fas fa-concierge-bell"></i>
+                                <p> Các hóa đơn đã thanh toán </p>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </nav>
