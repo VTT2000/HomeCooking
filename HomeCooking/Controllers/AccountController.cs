@@ -128,6 +128,19 @@ namespace HomeCooking.Controllers
             HomeCooking0Context context = new HomeCooking0Context();
             // kho bep
             List<ChiTietKhoBep> list = context.ChiTietKhoBeps.Where(p => p.IdKhoBepNavigation.IdKh == idKH).ToList();
+            // update neu thuc pham hong
+            for(int i = 0; i < list.Count; i++)
+            {
+                LoHang test = context.LoHangs.FirstOrDefault(p => p.IdLoHang == list[i].IdLoHang);
+                if(test.NgayHetHan < DateTime.Now)
+                {
+                    list[i].Status = "Đã hỏng";
+                    ChiTietKhoBep update = list[i];
+                    context.Update(update);
+                    context.SaveChanges();
+                }
+            }
+            //Cac list can thiet
             ViewBag.HoaDonKhachHangs = context.HoaDonKhachHangs.ToList();
             ViewBag.ChiTietHoaDonKhachHangs = context.ChiTietHoaDonKhachHangs.ToList();
             ViewBag.LoHangs = context.LoHangs.ToList();
@@ -145,6 +158,18 @@ namespace HomeCooking.Controllers
 
             return View(list);
         }
+        public IActionResult DeleteKhoBep(string IdKhoBep, string IdInvoice, string IdLoHang)
+        {
+            string idKH = HttpContext.Session.GetString("KhachHangIdKH");
+            string namKH = HttpContext.Session.GetString("KhachHangName");
+            HomeCooking0Context context = new HomeCooking0Context();
+
+            ChiTietKhoBep delete = context.ChiTietKhoBeps.FirstOrDefault(p=>p.IdKhoBep == IdKhoBep && p.IdInvoice == IdInvoice && p.IdLoHang == IdLoHang);
+            context.Remove(delete);
+            context.SaveChanges();
+
+            return RedirectToAction("KhoBep","Account");
+        }
         public bool XetCongThucNauAn(string IdCongThuc, List<ChiTietKhoBep> list)//id cong thuc va list thuc pham trong kho bep 
         {
             string idKH = HttpContext.Session.GetString("KhachHangIdKH");
@@ -157,12 +182,16 @@ namespace HomeCooking.Controllers
             int demTrue = 0;
             for(int i = 0; i < list.Count; i++)
             {
-                // chuyen id lo hang thanh id food trong list trong kho bep
-                string xIdFoodht = context.LoHangs.FirstOrDefault(p => p.IdLoHang == list[i].IdLoHang).IdFood;
-                int xSoLuonght = list[i].SoLuongTrongChiTietHoDonKhachHang.Value;
-                if (listTest.FirstOrDefault(p=>p.IdFood == xIdFoodht && p.SoLuong < xSoLuonght) != null)
+                // lay thuc pham chua hong
+                if(list[i].Status == "Chưa hỏng")
                 {
-                    demTrue += 1;
+                    // chuyen id lo hang thanh id food trong list trong kho bep
+                    string xIdFoodht = context.LoHangs.FirstOrDefault(p => p.IdLoHang == list[i].IdLoHang).IdFood;
+                    int xSoLuonght = list[i].SoLuongTrongChiTietHoDonKhachHang.Value;
+                    if (listTest.FirstOrDefault(p => p.IdFood == xIdFoodht && p.SoLuong < xSoLuonght) != null)
+                    {
+                        demTrue += 1;
+                    }
                 }
             }
             if(demTrue == listTest.Count)

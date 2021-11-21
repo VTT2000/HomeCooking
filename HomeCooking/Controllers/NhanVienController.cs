@@ -48,31 +48,43 @@ namespace HomeCooking.Controllers
         }
         public IActionResult ConfirmedInvoice(string id)
         {
+            
+
             string idnv = HttpContext.Session.GetString("IdNhanVien");
             string namenv = HttpContext.Session.GetString("NameNhanVien");
             HomeCooking0Context context = new HomeCooking0Context();
-
+            
             HoaDonKhachHang a = context.HoaDonKhachHangs.FirstOrDefault(p => p.IdInvoice == id);
             a.Status = "Đã giao";
             a.IdNv = idnv;
             context.Update(a);
             context.SaveChanges();
 
+            // khi xac nhan tu dong tru vao lo hang va them chi tiet kho bep
+            
             string idBep = context.KhoBepOnlines.FirstOrDefault(p => p.IdKh == a.IdKh).IdKhobep;
-            for(int i= 0;i<context.ChiTietHoaDonKhachHangs.Where(p=>p.IdInvoice == a.IdInvoice).Count(); i++)
+            List<ChiTietHoaDonKhachHang> listCTHD = context.ChiTietHoaDonKhachHangs.Where(p => p.IdInvoice == a.IdInvoice).ToList();
+            for (int i= 0;i<listCTHD.Count; i++)
             {
+                // tru vao lo hang
+                LoHang temp = context.LoHangs.FirstOrDefault(p => p.IdLoHang == listCTHD[i].IdLoHang);
+                temp.SoLuong = temp.SoLuong - listCTHD[i].SoLuong;
+                context.Update(temp);
+                context.SaveChanges();
+                // them chi tiet kho bep
                 ChiTietKhoBep z = new ChiTietKhoBep();
                 z.IdKhoBep = idBep;
                 z.IdInvoice = a.IdInvoice;
-                z.IdLoHang = context.ChiTietHoaDonKhachHangs.Where(p => p.IdInvoice == a.IdInvoice).ToList()[i].IdLoHang;
+                z.IdLoHang = listCTHD[i].IdLoHang;
                 z.Status = "Chưa hỏng";
                 string zidfood = context.LoHangs.FirstOrDefault(p => p.IdLoHang == z.IdLoHang).IdFood;
-                z.SoLuongTrongChiTietHoDonKhachHang = (context.ChiTietHoaDonKhachHangs.Where(p => p.IdInvoice == a.IdInvoice).ToList()[i].SoLuong) 
+                z.SoLuongTrongChiTietHoDonKhachHang = (listCTHD[i].SoLuong) 
                     * (context.ThucPhams.FirstOrDefault(p=>p.IdFood == zidfood).SoLuong);
 
                 context.ChiTietKhoBeps.Add(z);
                 context.SaveChanges();
             }
+
 
             return RedirectToAction("ListConfirmedInvoice", "NhanVien");
         }
@@ -81,7 +93,7 @@ namespace HomeCooking.Controllers
             string idnv = HttpContext.Session.GetString("IdNhanVien");
             string namenv = HttpContext.Session.GetString("NameNhanVien");
             HomeCooking0Context context = new HomeCooking0Context();
-            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p => p.IdNv == idnv).ToList();
+            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p => p.IdNv == idnv).OrderByDescending(p=>p.IdInvoice).ToList();
 
             return View(list);
         }

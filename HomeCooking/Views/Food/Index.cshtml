@@ -216,7 +216,12 @@
                                                 <div class="product-form__payment-container">
                                                     @using Microsoft.AspNetCore.Http.Extensions;
                                                     <input type="hidden" name="strURL" value="@Context.Request.GetDisplayUrl()">
-                                                    <button type="submit" class="product-form__add-button button button--primary" data-action="add-to-cart">Thêm vào giỏ hàng</button>
+
+                                                    @if (list2.FindAll(p => p.IdFood == Model.IdFood).FirstOrDefault(p => p.SoLuong > 0) != null)
+                                                    {
+                                                        <button type="submit" class="product-form__add-button button button--primary" data-action="add-to-cart">Thêm vào giỏ hàng</button>
+
+                                                    }
                                                     <div data-shopify="payment-button" class="shopify-payment-button">
                                                         @if (ViewBag.TheoDoi == false)
                                                         {
@@ -251,7 +256,7 @@
                                                                     })
                                                                     .catch(error => alert(error));
                                                             };
-                                                            
+
                                                         </script>
                                                     </div>
                                                 </div>

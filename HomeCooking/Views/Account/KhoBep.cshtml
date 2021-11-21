@@ -81,7 +81,14 @@
                                         </td>
 
                                         <td>
-                                            <a href="@Url.Action("DeleteKhoBep","Account", new { IdKhoBep = item.IdKhoBep, IdInvoice = item.IdInvoice, IdLoHang = item.IdLoHang })">Xóa thực phẩm</a>
+                                            <button class="btn-danger" onclick="XacNhanXoaTP(this.getAttribute('address-href'));" address-href="@Url.Action("DeleteKhoBep","Account", new { IdKhoBep = item.IdKhoBep, IdInvoice = item.IdInvoice, IdLoHang = item.IdLoHang })">Xóa thực phẩm</button>
+                                            <script>
+                                                function XacNhanXoaTP(diachihref) {
+                                                    if (confirm("Bạn chắc chắn muốn xóa thực phẩm này ra khỏi kho bếp ?")) {
+                                                        location.href = "https://" + location.host + diachihref;
+                                                    }
+                                                }
+                                            </script>
                                         </td>
                                     </tr>
                                 }

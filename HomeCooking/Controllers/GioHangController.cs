@@ -92,12 +92,50 @@ namespace HomeCooking.Controllers
             return View(listGH);
         }
 
-        [HttpPost,ActionName("Index")]
-        public IActionResult ThanhToan()
+        [HttpPost]
+        public IActionResult ThanhToanThuong()// thanh toan gio hang
         {
-            
+            string namekh = HttpContext.Session.GetString("KhachHangName");
+            string idkh = HttpContext.Session.GetString("KhachHangIdKH");
+            List<GioHang> listGH = LayGioHang();
+            // tao hoa don khach hang
+            HoaDonKhachHang hoaDonKhachHang = new HoaDonKhachHang();
+            hoaDonKhachHang.IdKh = idkh;
+            hoaDonKhachHang.CreatedDate = DateTime.Now;
+            hoaDonKhachHang.DeliveryDate = DateTime.Now;//***Chọn ngay nhận trên form thanh toán
+            hoaDonKhachHang.TongTien = (int) TongTien();
+            hoaDonKhachHang.PhuongThucThanhToan = "Thường";
+            hoaDonKhachHang.Status = "Chưa giao";
 
-            return View();
+            context.HoaDonKhachHangs.Add(hoaDonKhachHang);
+            context.SaveChanges();
+            // tao chi tiet hoa don khach hang
+            for(int i = 0; i < listGH.Count; i++)
+            {
+                ChiTietHoaDonKhachHang temp = new ChiTietHoaDonKhachHang();
+                LoHang a = context.LoHangs.FirstOrDefault(p => p.IdFood == listGH[i].zIdFood && p.SoLuong > listGH[i].zSoLuong);
+                if (a == null)
+                {
+                    // tim ko thay lo hang cho san pham // da chan ko cho vao gio hang neu het hang // truong hop nay ko bao gio xay ra
+                }
+                else
+                {
+                    temp.IdInvoice = hoaDonKhachHang.IdInvoice;
+                    temp.IdLoHang = a.IdLoHang;
+                    temp.SoLuong = listGH[i].zSoLuong;
+                    temp.GiaTien = (int) listGH[i].zThanhTien;
+
+                    context.ChiTietHoaDonKhachHangs.Add(temp);
+                    context.SaveChanges();
+                }
+            }
+            // lam sach gio hang
+            listGH = new List<GioHang>();
+            HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(listGH));
+            
+            // khi xac nhan tu nhan vien tu dong trừ vao lo hang va them chi tiet kho bep
+
+            return RedirectToAction("Index","Home");
         }
         [HttpGet]
         public IActionResult ThemMot([FromQuery] string IdFood)
