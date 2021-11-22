@@ -873,3 +873,4 @@ C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\NhanVien\ConfirmInvoice.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\NhanVien\CTInvoice.cshtml.g.cs
 C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\NhanVien\ListConfirmedInvoice.cshtml.g.cs
+C:\Users\DELL\Downloads\HomeCooking\HomeCooking\HomeCooking\obj\Debug\netcoreapp3.1\Razor\Views\ThanhToan\Index.cshtml.g.cs

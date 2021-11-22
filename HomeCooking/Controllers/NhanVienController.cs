@@ -27,7 +27,7 @@ namespace HomeCooking.Controllers
             string idnv = HttpContext.Session.GetString("IdNhanVien");
             string namenv = HttpContext.Session.GetString("NameNhanVien");
             HomeCooking0Context context = new HomeCooking0Context();
-            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p=>p.Status == "Chưa giao").ToList();
+            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p=>p.Status == "Chưa giao").OrderByDescending(p=>p.IdInvoice).ToList();
 
             return View(list);
         }

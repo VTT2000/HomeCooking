@@ -70,7 +70,7 @@ namespace HomeCooking.Controllers
             string namKH = HttpContext.Session.GetString("KhachHangName");
 
             HomeCooking0Context context = new HomeCooking0Context();
-            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p => p.IdKh == idKH).ToList();
+            List<HoaDonKhachHang> list = context.HoaDonKhachHangs.Where(p => p.IdKh == idKH).OrderByDescending(p=>p.IdInvoice).ToList();
 
             return View(list);
         }

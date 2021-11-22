@@ -119,7 +119,15 @@
                                             @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
                                             <input type="hidden" value="@HttpContextAccessor.HttpContext.Session.GetString("KhachHangIdKH")" id="IDKHDN" />
                                             <input type="hidden" value="@Model.ToList().Count" id="SLGH" />
-                                            <input type="hidden" value="@a.DiaChi" id="DiaChiKH" />
+                                            @if(a != null)
+            {
+                                        <input type="hidden" value="@a.DiaChi" id="DiaChiKH" />
+            }
+            else
+            {
+                                        <input type="hidden" value="" id="DiaChiKH" />
+            }
+                                            
 
                                             <button onclick="thanhToan();" class="cart-recap__checkout button button--primary button--full button--large">Thanh toán</button>
                                             <script>
@@ -127,24 +135,28 @@
                                                     var z = document.getElementById("IDKHDN");
                                                     if (z.value == null || z.value.length == 0) {
                                                         alert("Bạn hãy đăng nhập để thanh toán");
+                                                        return;
                                                     }
                                                     else {
                                                         var c = document.getElementById("SLGH");
                                                         if (parseInt(c.value, 0) == 0) {
                                                             alert("Giỏ hàng bạn đang trống");
+                                                            return;
+                                                        }
+                                                        var n = document.getElementById("DiaChiKH");
+                                                        if (n.value.length == 0) {
+                                                            alert("Bạn hãy điền địa chỉ trong thông tin cá nhân để thanh toán");
+                                                            return;
                                                         }
                                                         else {
-                                                            var n = document.getElementById("DiaChiKH");
-                                                            if (n.value.length == 0) {
-                                                                alert("Bạn hãy điền địa chỉ trong thông tin cá nhân để thanh toán");
-                                                            }
-                                                            else {
-                                                                location.href = "https://" + location.host + "/GioHang/ThanhToan";
-                                                            }
-                                                            
+                                                            location.href = "https://" + location.host + "/ThanhToan/Index";
+                                                            alert("Bắt đầu chuyển hướng sang trang thanh toán");
+                                                            return;
                                                         }
                                                     }
+                                                    
                                                 }
+                                                
                                             </script>
                                         </div>
                                     </div>

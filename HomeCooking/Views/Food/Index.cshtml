@@ -143,7 +143,63 @@
 
                                                             <div class="product-form__info-content"><span class="product-form__inventory inventory inventory--high">Còn hàng</span></div>
                                                         </div>
+                                                        <div class="product-form__info-item product-form__info-item--quantity">
+                                                            <label for="product-template-6806124495026-quantity" class="product-form__info-title text--strong">Số lượng:</label>
 
+                                                            <div class="product-form__info-content">
+                                                                <div class="quantity-selector quantity-selector--product">
+                                                                    <button id="giamSL" type="button" class="quantity-selector__button" data-action="decrease-picker-quantity" aria-label="Giảm số lượng xuống 1" title="Giảm số lượng xuống 1">
+                                                                        <svg focusable="false" class="icon icon--minus" viewBox="0 0 10 2" role="presentation">
+                                                                            <path d="M10 0v2H0V0z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <input id="soLuong" name="soLuong" aria-label="Số lượng" class="quantity-selector__value" inputmode="numeric" value="1" size="3">
+                                                                    <button id="tangSL" type="button" class="quantity-selector__button" data-action="increase-picker-quantity" aria-label="Tăng số lượng lên 1" title="Tăng số lượng lên 1">
+                                                                        <svg focusable="false" class="icon icon--plus" viewBox="0 0 10 10" role="presentation">
+                                                                            <path d="M6 4h4v2H6v4H4V6H0V4h4V0h2v4z" fill="currentColor" fill-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <script>
+                                                                        var giam = document.getElementById("giamSL");
+                                                                        var soLuonght = document.getElementById("soLuong");
+                                                                        var tang = document.getElementById("tangSL");
+
+                                                                        giam.onclick = function () {
+                                                                            if (parseInt(soLuonght.value, 0) - 1 < 1) {
+
+                                                                            }
+                                                                            else {
+                                                                                soLuonght.value = parseInt(soLuonght.value, 0) - 1;
+                                                                            }
+                                                                        };
+
+                                                                        tang.onclick = function () {
+                                                                            if (parseInt(soLuonght.value, 0) + 1 > 10) {
+
+                                                                            }
+                                                                            else {
+                                                                                soLuonght.value = parseInt(soLuonght.value, 0) + 1;
+                                                                            }
+                                                                        };
+
+                                                                        soLuonght.onchange = function () {
+                                                                            if (soLuonght.value.length == 0) {
+
+                                                                            }
+                                                                            else {
+                                                                                if (soLuonght.value > 10) {
+                                                                                    soLuonght.value = 10;
+                                                                                }
+                                                                                if (soLuonght.value < 1) {
+                                                                                    soLuonght.value = 1;
+                                                                                }
+                                                                            }
+                                                                        };
+
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     }
                                                     else
                                                     {
@@ -152,66 +208,10 @@
 
                                                             <div class="product-form__info-content"><span class="product-item__inventory inventory inventory--high">Hết hàng</span></div>
                                                         </div>
-                                                        
+
                                                     }
 
-                                                    <div class="product-form__info-item product-form__info-item--quantity">
-                                                        <label for="product-template-6806124495026-quantity" class="product-form__info-title text--strong">Số lượng:</label>
 
-                                                        <div class="product-form__info-content">
-                                                            <div class="quantity-selector quantity-selector--product">
-                                                                <button id="giamSL" type="button" class="quantity-selector__button" data-action="decrease-picker-quantity" aria-label="Giảm số lượng xuống 1" title="Giảm số lượng xuống 1">
-                                                                    <svg focusable="false" class="icon icon--minus" viewBox="0 0 10 2" role="presentation">
-                                                                        <path d="M10 0v2H0V0z" fill="currentColor"></path>
-                                                                    </svg>
-                                                                </button>
-                                                                <input id="soLuong" name="soLuong" aria-label="Số lượng" class="quantity-selector__value" inputmode="numeric" value="1" size="3">
-                                                                <button id="tangSL" type="button" class="quantity-selector__button" data-action="increase-picker-quantity" aria-label="Tăng số lượng lên 1" title="Tăng số lượng lên 1">
-                                                                    <svg focusable="false" class="icon icon--plus" viewBox="0 0 10 10" role="presentation">
-                                                                        <path d="M6 4h4v2H6v4H4V6H0V4h4V0h2v4z" fill="currentColor" fill-rule="evenodd"></path>
-                                                                    </svg>
-                                                                </button>
-                                                                <script>
-                                                                    var giam = document.getElementById("giamSL");
-                                                                    var soLuonght = document.getElementById("soLuong");
-                                                                    var tang = document.getElementById("tangSL");
-
-                                                                    giam.onclick = function () {
-                                                                        if (parseInt(soLuonght.value, 0) - 1 < 1) {
-                                                                            
-                                                                        }
-                                                                        else {
-                                                                            soLuonght.value = parseInt(soLuonght.value, 0) - 1;
-                                                                        }
-                                                                    };
-
-                                                                    tang.onclick = function () {
-                                                                        if (parseInt(soLuonght.value, 0) + 1 > 10) {
-
-                                                                        }
-                                                                        else {
-                                                                            soLuonght.value = parseInt(soLuonght.value, 0) + 1;
-                                                                        }
-                                                                    };
-
-                                                                    soLuonght.onchange = function () {
-                                                                        if (soLuonght.value.length == 0) {
-
-                                                                        }
-                                                                        else {
-                                                                            if (soLuonght.value > 10) {
-                                                                                soLuonght.value = 10;
-                                                                            }
-                                                                            if (soLuonght.value < 1) {
-                                                                                soLuonght.value = 1;
-                                                                            }
-                                                                        }
-                                                                    };
-                                                                    
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="product-form__payment-container">
                                                     @using Microsoft.AspNetCore.Http.Extensions;
