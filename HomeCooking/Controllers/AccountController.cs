@@ -178,7 +178,12 @@ namespace HomeCooking.Controllers
 
             //danh sach idfood and so luong can cho cong thuc
             List<ChiTietCongThucNauAn> listTest = context.ChiTietCongThucNauAns.Where(p => p.IdCongThuc == IdCongThuc).ToList();
-            
+            if(listTest.Count == 0)
+            {
+                // doi voi cac cong thuc chua co thuc pham nau
+                return false;
+            }
+
             int demTrue = 0;
             for(int i = 0; i < list.Count; i++)
             {
