@@ -128,8 +128,9 @@ namespace HomeCooking.Controllers
             HomeCooking0Context context = new HomeCooking0Context();
             // kho bep
             List<ChiTietKhoBep> list = context.ChiTietKhoBeps.Where(p => p.IdKhoBepNavigation.IdKh == idKH).ToList();
+            List<ChiTietKhoBep> listConHanSuDung = new List<ChiTietKhoBep>();// list thuc pham kho bep con han su dung
             // update neu thuc pham hong
-            for(int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 LoHang test = context.LoHangs.FirstOrDefault(p => p.IdLoHang == list[i].IdLoHang);
                 if(test.NgayHetHan < DateTime.Now)
@@ -138,6 +139,10 @@ namespace HomeCooking.Controllers
                     ChiTietKhoBep update = list[i];
                     context.Update(update);
                     context.SaveChanges();
+                }
+                else
+                {
+                    listConHanSuDung.Add(list[i]);
                 }
             }
             //Cac list can thiet
@@ -149,7 +154,7 @@ namespace HomeCooking.Controllers
             List<CongThucNauAn> list2 = new List<CongThucNauAn>();
             foreach(CongThucNauAn item in context.CongThucNauAns.ToList())
             {
-                if (XetCongThucNauAn(item.IdCongThuc, list))
+                if (XetCongThucNauAn(item.IdCongThuc, listConHanSuDung))
                 {
                     list2.Add(item);
                 }
