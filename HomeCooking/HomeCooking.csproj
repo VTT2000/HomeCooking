@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <None Include="Views\Account\Index.cshtml" />
+    <None Include="Views\ChiTietCongThucNauAn\Index.cshtml" />
+    <None Include="Views\CongThucNauAn\Index.cshtml" />
     <None Include="Views\ConsignmentManage\Index.cshtml" />
     <None Include="Views\EmployeeManage\Index.cshtml" />
     <None Include="Views\FoodManage\Index.cshtml" />

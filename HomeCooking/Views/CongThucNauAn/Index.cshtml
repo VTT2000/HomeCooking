@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HomeCooking.Models.CongThucNauAn>
+@{
+    ViewBag.Title = "Món Ăn";
+    Layout = "_Layout";
+    List<CongThucNauAn> list0 = ViewBag.CongThucNauAns as List<CongThucNauAn>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+</head>
+<body>
+
+    <!-- body-->
+    <main id="main" role="main">
+
+        <!-- list sản phẩm-->
+        <div id="shopify-section-item" class="shopify-section">
+            <section class="section" data-section-id="" data-section-type="featured-collection">
+                <div class="container">
+                    <header class="section__header">
+                        <div class="section__header-stack">
+                            <h2 class="section__title heading h3">Danh Mục các món ăn</h2>
+
+                        </div>
+                    </header>
+                </div>
+                <!-- sản phẩm-->
+                <div class="container ">
+                    <div class="scroller">
+                        <div class="scroller__inner">
+                            <div class="product-list product-list--vertical product-list--scrollable flickity-enabled" tabindex="0">
+                                @foreach (var item in Model.ToList())
+                                {
+                                <div class="product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected" style=" left: 0%;">
+                                    <a href="@Url.Action("Index","ChiTietCongThucNauAn",new { id = item.IdCongThuc })" class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                                        <div class="aspect-ratio " style="padding-bottom: 100.0%">
+                                            <img class="" sizes="300px" srcset="">
+                                            <img src="@item.LinkHinhAnh" />
+                                        </div>
+                                    </a>
+
+                                    <a href="@Url.Action("Index","ChiTietCongThucNauAn",new { id = item.IdCongThuc })" class="product-item__title text--strong link">@item.TenCongThuc</a>
+                                </div>
+                                      
+                                        }
+
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <!-- end sản phẩm-->
+            </section>
+        </div>
+        <!-- end list sản phẩm-->
+    </main>
+
+</body>
+</html>
