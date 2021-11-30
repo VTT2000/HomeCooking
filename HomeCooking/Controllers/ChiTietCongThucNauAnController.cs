@@ -24,10 +24,36 @@ namespace HomeCooking.Controllers
             ViewBag.ThucPhams = context.ThucPhams.ToList();
 
             // nau an cho nguoi dang nhap
+            ViewBag.ListNLBepCoSan = getlistNguyenLieuThieu(id);
             if (!String.IsNullOrEmpty(HttpContext.Session.GetString("KhachHangIdKH"))){
                 if (String.IsNullOrEmpty(HttpContext.Session.GetString("NauAnIdCongThuc")))
                 {
-                    ViewBag.ListGHThieu = getlistNguyenLieuThieu(id);
+                    if (String.IsNullOrEmpty(HttpContext.Session.GetString("GioHang")))
+                    {
+                        ViewBag.ListGHThieu = getlistNguyenLieuThieu(id);
+                    }
+                    else
+                    {
+                        List<GioHang> listGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
+                        if(listGioHang.Count == 0)
+                        {
+                            ViewBag.ListGHThieu = getlistNguyenLieuThieu(id);
+                        }
+                        else
+                        {
+                            List<GioHang> listThieu = getlistNguyenLieuThieu(id);
+                            for(int i = 0; i < listThieu.Count; i++)
+                            {
+                                GioHang trongGio = listGioHang.FirstOrDefault(p => p.zIdFood == listThieu[i].zIdFood);
+                                if (trongGio != null)
+                                {
+                                    listThieu[i].zSoLuong -= trongGio.zSoLuong;
+                                }
+                            }
+                            ViewBag.ListGHThieu = listThieu.FindAll(p => p.zSoLuong > 0);
+                        }
+                    }
+                    
                 }
             }
 

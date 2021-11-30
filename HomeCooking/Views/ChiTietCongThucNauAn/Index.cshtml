@@ -7,6 +7,7 @@
     List<ThucPham> list2 = ViewBag.ThucPhams as List<ThucPham>;
 
     List<GioHang> listGHthieu = ViewBag.ListGHThieu as List<GioHang>;
+    List<GioHang> listGHtrongBep = ViewBag.ListNLBepCoSan as List<GioHang>;
 }
 
 <!DOCTYPE html>
@@ -36,18 +37,18 @@
 
                 <div class="container">
                     <h2 class="section__title heading h3">Nguyên Liệu</h2>
-                        @foreach(var i in list1)
+                    @foreach (var i in list1)
+                    {
+                        var showa = list2.FirstOrDefault(p => p.IdFood == i.IdFood);
+                        if (showa != null)
                         {
-                            var showa = list2.FirstOrDefault(p => p.IdFood == i.IdFood);
-                            if(showa != null)
-                            {
-                                <div class="container">
-                                    @showa.NameFood :
-                                    @i.SoLuong
-                                    @showa.DonViTinh
-                                </div>
-                            }   
+                            <div class="container">
+                                @showa.NameFood :
+                                @i.SoLuong
+                                @showa.DonViTinh
+                            </div>
                         }
+                    }
                 </div>
 
                 <div class="container">
@@ -77,7 +78,7 @@
                                     <div class="content-box">
                                         <div class="content-box__row">
                                             <div class="radio-wrapper">
-                                                <button data-link-href="@Url.Action("NauAnVoiCongThuc","ChiTietCongThucNauAn", new { id = Model.IdCongThuc })" onclick="InAndOutKB(this.getAttribute('data-link-href'));"  class="step__footer__continue-btn btn" aria-busy="false">
+                                                <button data-link-href="@Url.Action("NauAnVoiCongThuc","ChiTietCongThucNauAn", new { id = Model.IdCongThuc })" onclick="InAndOutKB(this.getAttribute('data-link-href'));" class="step__footer__continue-btn btn" aria-busy="false">
                                                     <span class="btn__content">Nguyên liệu bên ngoài và kho bếp</span>
                                                 </button>
                                             </div>
@@ -89,7 +90,9 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <input hidden id="listGHthieu" value="@listGHthieu.Count" />
+                                        <input hidden id="listGHthieu" value="@listGHtrongBep.Count" />
+                                        <input hidden id="listGHthieu0" value="@listGHthieu.Count" />
+
                                         <script>
                                             function InAndOutKB(link) {
                                                 if (confirm("Nấu ăn với nguyên liệu bên ngoài sẵn có và cả kho bếp online. Xác nhận tiến hành nấu ăn ?")) {
@@ -99,7 +102,7 @@
                                                     // chang lam gi
                                                 }
                                             }
-                                            function OnlyKhoBep(link1,link2) {
+                                            function OnlyKhoBep(link1, link2) {
                                                 var a = document.getElementById('listGHthieu');
                                                 if (parseInt(a.value, 0) == 0) {
                                                     if (confirm("Kho bếp online đủ nguyên liệu nấu ăn. Xác nhận tiến hành nấu ăn ?")) {
@@ -110,19 +113,92 @@
                                                     }
                                                 }
                                                 else {
-                                                    if (confirm("Thiếu nguyên liệu nấu ăn. Bổ sung các nguyên liệu cần thiết vào giỏ hàng ?")) {
-                                                        location.href = link2;
+                                                    var f = document.getElementById('listGHthieu0');
+                                                    if (parseInt(f.value, 0) == 0) {
+                                                        alert("Hãy mua các nguyên liệu đã cho vào giỏ hàng");
                                                     }
                                                     else {
-                                                        // chang lam gi
+                                                        alert("Hãy mua các nguyên liệu đang thiếu bên dưới cho vào giỏ hàng");
                                                     }
+                                                    //if (confirm("Thiếu nguyên liệu nấu ăn. Bổ sung các nguyên liệu cần thiết vào giỏ hàng ?")) {
+                                                    //    location.href = link2;
+                                                    //}
+                                                    //else {
+                                                    //    // chang lam gi
+                                                    //}
                                                 }
                                             }
                                         </script>
                                     </div>
                                 </div>
                             </div>
+                            <div class="container">
+                                @*hien danh sach thieu*@
+                                @if (listGHtrongBep.Count != 0)
+                                {
 
+                                    @if (listGHthieu.Count != 0)
+                                    {
+                                        <div class="card__section card__section--tight">
+                                            <h1 class="heading h1">Các thực phẩm còn thiếu trong món ăn (Cho vào giỏ hàng) </h1>
+                                        </div>
+                                        <div class="card__section">
+                                            <table class="table" border="1">
+                                                <tr style="background-color:gray">
+                                                    <th>
+                                                        Hình ảnh
+                                                    </th>
+
+                                                    <th>
+                                                        Tên thực phẩm
+                                                    </th>
+                                                    <th>
+                                                        Số lượng trên một sản phẩm
+                                                    </th>
+                                                    <th>
+                                                        Đơn vị tính
+                                                    </th>
+                                                    <th>
+                                                        Số lượng cần mua
+                                                    </th>
+                                                    <th>
+                                                        Thao tác
+                                                    </th>
+                                                </tr>
+                                                @using Microsoft.AspNetCore.Http.Extensions;
+                                                @foreach (GioHang item in listGHthieu)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <img src="@item.zLinkHinhAnh" />
+                                                        </td>
+                                                        <td>
+                                                            @item.zNameFood
+                                                        </td>
+                                                        <td>
+                                                            @list2.FirstOrDefault(p => p.IdFood == item.zIdFood).SoLuong
+                                                        </td>
+                                                        <td>
+                                                            @list2.FirstOrDefault(p => p.IdFood == item.zIdFood).DonViTinh
+                                                        </td>
+                                                        <td>
+                                                            @item.zSoLuong
+                                                        </td>
+                                                        <td>
+                                                            <a href="@Url.Action("ThemGioHang","GioHang", new { IdFood = item.zIdFood, strURL = Context.Request.GetDisplayUrl(), soLuong = item.zSoLuong })">Thêm vào giỏ hàng</a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                            <div>
+                                                <a href="@Url.Action("AddThucPhamThieuVaoGH","ChiTietCongThucNauAn", new { id = Model.IdCongThuc })">Thêm tất cả vào giỏ hàng và chuyển hướng sang giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+
+                            </div>
                         }
                         else
                         {
@@ -199,7 +275,7 @@
                     }
 
                 </div>
-
+                
             </section>
         </div>
         <!-- end list sản phẩm-->

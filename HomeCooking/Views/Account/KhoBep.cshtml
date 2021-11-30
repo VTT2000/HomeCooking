@@ -77,7 +77,15 @@
                                             @Html.DisplayFor(modelItem => item.IdInvoiceNavigation.ChiTietHoaDonKhachHangs.FirstOrDefault(p => p.IdLoHang == item.IdLoHang).IdLoHangNavigation.IdFoodNavigation.DonViTinh)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Status)
+                                            @if (item.Status != "Đã hỏng")
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            }
+                                            else
+                                            {
+                                            <span style="color:red;">@item.Status</span>
+                                            }
+
                                         </td>
 
                                         <td>
