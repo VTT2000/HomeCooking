@@ -79,11 +79,11 @@
                                         <td>
                                             @if (item.Status != "Đã hỏng")
                                             {
-                                                @Html.DisplayFor(modelItem => item.Status)
+                                                <span>Còn hạn</span>
                                             }
                                             else
                                             {
-                                            <span style="color:red;">@item.Status</span>
+                                            <span style="color:red;">Hết hạn</span>
                                             }
 
                                         </td>
