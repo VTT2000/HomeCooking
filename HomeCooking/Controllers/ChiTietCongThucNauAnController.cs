@@ -23,9 +23,10 @@ namespace HomeCooking.Controllers
             ViewBag.ChiTietCongThucNauAns = context.ChiTietCongThucNauAns.Where(p => p.IdCongThuc == id).ToList();
             ViewBag.ThucPhams = context.ThucPhams.ToList();
 
-            // nau an cho nguoi dang nhap
-            ViewBag.ListNLBepCoSan = getlistNguyenLieuThieu(id);
+            
             if (!String.IsNullOrEmpty(HttpContext.Session.GetString("KhachHangIdKH"))){
+                // nau an cho nguoi dang nhap 0x0
+                ViewBag.ListNLBepCoSan = getlistNguyenLieuThieu(id);
                 if (String.IsNullOrEmpty(HttpContext.Session.GetString("NauAnIdCongThuc")))
                 {
                     if (String.IsNullOrEmpty(HttpContext.Session.GetString("GioHang")))
